@@ -1,0 +1,211 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<LINK href="http://www.pudn.com/inc/html.css" type=text/css rel=stylesheet>
+<LINK href="http://www.pudn.com/style.css" type=text/css rel=stylesheet>
+<title>SIP-Call-Flow-Examples SIP呼叫流程的示例，英文版，是很好的学习资料。 File Formats 文件格式 133万源代码下载- www.pudn.com</title>
+<script language="JavaScript">
+function checkinput()
+{
+	if (document.form1.keyword.value=="")
+	 {
+		alert("请输入想查询的内容！");
+		document.form1.keyword.focus();
+		return false;
+	 }
+	 return true;
+}
+function openwin(keyword, se_type)
+{
+if(se_type =='pudn')
+  window.open('/search_db.asp?keyword=' + keyword, 'search');
+else
+  window.open('http://www.google.com/custom?domains=pudn.com&q=' + keyword +'&sitesearch=pudn.com&client=pub-8055710228382273&forid=1&ie=GB2312&oe=GB2312&safe=active&cof=GALT%3A%23008000%3BGL%3A1%3BDIV%3A%23336699%3BVLC%3A663399%3BAH%3Acenter%3BBGC%3AFFFFFF%3BLBGC%3A336699%3BALC%3A0000FF%3BLC%3A0000FF%3BT%3A000000%3BGFNT%3A0000FF%3BGIMP%3A0000FF%3BFORID%3A1&hl=zh-CN', 'search');
+}
+function favor_add(t, id, n)
+{
+  window.open('/favor_add.asp?e=' + id +'&t=' + t +'&n=' + n, '添加收藏');
+}
+function fcomment_q(id, grade)
+{
+  window.open('/fcomment_q.asp?id=' + id + '&grade=' + grade, '评论');
+}
+function SetIFrameHeight(iframe_id, add_y)
+{
+  var bobo=document.getElementById(iframe_id);
+   if (bobo && !window.opera)
+   {
+    if (bobo.contentDocument && bobo.contentDocument.body.offsetHeight){
+     bobo.height = bobo.contentDocument.body.offsetHeight+add_y;
+    }else if(bobo.Document && bobo.Document.body.scrollHeight){
+     bobo.height = bobo.Document.body.scrollHeight+add_y;
+    }
+   }
+}
+function addrow(tbobj,frm){
+ var row = tbobj.insertRow(1);
+ var col = row.insertCell(0);
+ col.innerHTML = '请输入留言或评论：<input type=text name=content size=45> <input name=sbt type=submit value=提交>';
+ frm.content.focus();
+ return false;
+}
+var down_id=270007;
+var type_id=86;
+var nav_info=" &gt; <a href='/download1.html'>Downloads</a> &gt; <a href='/doc/download4.html'>文章/文档</a> &gt; <a href=/doc/FileFormat/download86.html>File Formats</a> &gt; <B>SIP-Call-Flow-Examples</B>";
+var user_email='';
+var en_url="http://en.pudn.com/downloads74/doc/fileformat/detail270007_en.html";
+</script>
+</head>
+<body style='overflow-x:hidden;'>
+<div class="wrapper">
+<script language="JavaScript" type="text/javascript" src="/inc/detail.js"></script>
+   <div class="pagebody2">
+    <div id="detail_fname">
+      &nbsp;文件名称: <B>SIP-Call-Flow-Examples</B><a href="/dl.asp?id=270007" target="_blank" rel="nofollow"><IMG src="http://www.pudn.com/images/d_download.gif" border=0>下载</a>
+<img src=http://www.pudn.com/images/free.gif>&nbsp; <a href=# onclick="javascript:favor_add('3', '270007', 'SIP-Call-Flow-Examples - SIP呼叫流程的示例，英文版，是很好的学习资料。');" rel="nofollow">收藏√</a>&nbsp; [<a href=# onclick="javascript:fcomment_q('270007', '100');" rel="nofollow"><img src=http://www.pudn.com/images/thumbs_up.gif border=0 align="middle" alt="投票：非常好"></a>
+&nbsp;<a href=# onclick="javascript:fcomment_q('270007', '100');" title="投票：非常好" rel="nofollow">5</a> &nbsp;<a href=# onclick="javascript:fcomment_q('270007', '85');" title="投票：还不错" rel="nofollow">4</a> &nbsp;<a href=# onclick="javascript:fcomment_q('270007', '75');" title="投票：一般，勉强可用" rel="nofollow">3</a> &nbsp;<a href=# onclick="javascript:fcomment_q('270007', '50');" title="投票：很一般" rel="nofollow">2</a> &nbsp;<a href=# onclick="javascript:fcomment_q('270007', '3');" title="投票：太差了" rel="nofollow">1</a>&nbsp;<a href=# onclick="javascript:fcomment_q('270007', '3');" rel="nofollow"><img src=http://www.pudn.com/images/thumbs_down.gif border=0 align="middle" alt="投票：太差了"></a>]    </div>
+    <div id="detail_info">
+      <div id="detail_gg">
+<script language="JavaScript">
+show_ad("ad_detail_b");
+</script>
+      </div>
+      <div id="detail_list">
+        <div class="detail_listnamevalue">
+        &nbsp;&nbsp;所属分类: <a href="/doc/FileFormat/download86.html"><B>File Formats</B></a>
+        </div>
+        <div class="detail_listnamevalue">
+        &nbsp;&nbsp;开发工具: <B>WORD</B>
+        </div>
+        <div class="detail_listnamevalue">
+        &nbsp;&nbsp;文件大小: 118 KB
+        </div>
+        <div class="detail_listnamevalue">
+        &nbsp;&nbsp;上传时间: 2007-04-18
+        </div>
+        <div class="detail_listnamevalue">
+        &nbsp;&nbsp;下载次数: 108
+        </div>
+        <div class="detail_listnamevalue">
+        &nbsp;&nbsp;提 供 者: <a href=http://s.pudn.com/upload_log.asp?e=720336 target=_blank>lxm</a>
+        </div>
+      </div>
+    </div>
+    <div class="detail_line">
+&nbsp;详细说明：<B>SIP呼叫流程的示例，英文版，是很好的学习资料。-SIP call flow examples, in English, is a very good learning materials.</B><div id="clogin"></div>
+    </div>
+    <div class="detail_line">
+&nbsp;<B>相关搜索</B>:
+<a href=# onclick="javascript:openwin('sip','pudn')" rel="nofollow">sip</a>&nbsp;<a href=# onclick="javascript:openwin('Flow','pudn')" rel="nofollow">Flow</a>&nbsp;
+    </div>
+<form name=frm_search2 action=/search_db.asp method=get>
+    <div class="detail_line">
+&nbsp;输入关键字，在本站133万海量源码库中尽情搜索：<INPUT maxLength=50 size=20 name=keyword value="sip Flow">
+<input  type=submit value="搜 索" name=_search2>&nbsp;<a href=/search_help.htm target=_blank>帮助</a>
+    </div>
+</form>
+    <div class="detail_line">
+&nbsp;[<a href="/downloads34/doc/comm/detail107441.html" target=_blank><font color=#CC0033>sip</font> Call <font color=#3300CC>Flow</font> Examples.rar</a>] - 一份详细的<font color=#CC0033>sip</font>协议的数据流分析的文档，该文档有两百多页，包含的SIP消息的各种情况，内容实用，可供SIP协议的VoIP开发者做一份详细的SIP数据流的分析手册。<BR>
+&nbsp;[<a href="/downloads65/sourcecode/p2p/detail233922.html" target=_blank>miniuseragent.rar</a>] - <font color=#CC0033>sip</font> mini User Agent. 最小的SIP客户端，支持最基本功能<BR>
+&nbsp;[<a href="/downloads86/sourcecode/java/detail332548.html" target=_blank>textclient.rar</a>] - 一个<font color=#CC0033>sip</font>客户端测试的源代码，比较小，对初学者有很直观的帮助，<BR>
+<script language="JavaScript">
+show_ad('ad_detail_c');
+</script>
+<BR>
+&nbsp;[<a href="/downloads57/doc/comm/detail202704.html" target=_blank><font color=#CC0033>sip</font>xiaoxi.rar</a>] - <font color=#CC0033>sip</font>消息之逐项讲解,讲解SIP消息的ppt文档<BR>
+&nbsp;[<a href="/downloads29/sourcecode/windows/network/detail92435.html" target=_blank><font color=#CC0033>sip</font>phone_Latest.zip</a>] - 基于<font color=#CC0033>sip</font>的音频传输，是一款很好音频聊天工具，希望对大家有用<BR>
+&nbsp;[<a href="/downloads120/ebook/detail509522.html" target=_blank>hj.rar</a>] - 呼叫流程需要进行相关开发的技术人员的好教材<BR>
+&nbsp;[<a href="/downloads50/ebook/detail169952.html" target=_blank>中国电信<font color=#CC0033>sip</font>协议测试.rar</a>] - <font color=#CC0033>sip</font>协议资料\中国电信SIP协议测试.rar，是关于sip协议测试的书籍<BR>
+    </div>
+    <div class="detail_line">
+      <B>文件列表(日期：2007041801)</B>(点击判断是否您需要的文件，如果是垃圾请在下面评价投诉): <BR>
+&nbsp;&nbsp;<a href="http://read.pudn.com/downloads74/doc/fileformat/270007/SIP Call Flow Examples.doc" target=_blank>SIP Call Flow Examples.doc</a><BR>    </div>
+    <div id="detail_line">
+<TABLE id=tb1 style="TABLE-LAYOUT: fixed; WORD-BREAK: break-all" cellSpacing=0 cellPadding=0 width="100%" border=0>
+<TBODY>
+<TR bgcolor=#F1F1F1>
+<TD>
+请<font color=red>评价</font>：<a href=# onclick="javascript:fcomment_q('270007', '100');" rel="nofollow">推荐↑</a>
+&nbsp;<a href=# onclick="javascript:fcomment_q('270007', '75');" rel="nofollow">一般</a>&nbsp;<a href=# onclick="javascript:fcomment_q('270007', '5');" rel="nofollow">有密码</a>&nbsp;<a href=# onclick="javascript:fcomment_q('270007', '40');" rel="nofollow">和说明不符</a>&nbsp;<a href=# onclick="javascript:fcomment_q('270007', '10');" rel="nofollow">不是源码或资料</a>&nbsp;<a href=# onclick="javascript:fcomment_q('270007', '20');" rel="nofollow">文件不全</a>
+&nbsp;<a href=# onclick="javascript:fcomment_q('270007', '0');" rel="nofollow">不能解压</a>&nbsp;<a href=# onclick="javascript:fcomment_q('270007', '3');" rel="nofollow">纯粹是垃圾</a>
+&nbsp;<a href=# onclick="javascript:addrow(tb1, addform); return false;" rel="nofollow">留言</a>
+</TD>
+</TR>
+<FORM action=/fcomment_q.asp method=get name=addform target=_blank>
+<input type=hidden name=id value=270007>
+<TR>
+</FORM>
+<TD>
+</TD>
+</tr>
+<tr height=10><td></td></tr>
+</tbody>
+</table>
+    </div>
+  </div>
+<div id="rightSideBar">
+<div class="dirList">
+<TABLE cellSpacing=0 cellPadding=1 width=175 border=0 bgcolor=#F9F9F9>
+<TBODY>
+<TR bgColor=#D0D0D0><TD colSpan=2 height=1></TD></TR>
+<TR bgcolor=#F0F0F0><TD height=22 colspan=2><div class=malign><img src=http://www.pudn.com/images/folderopen.gif> File Formats</div></TD></TR>
+<TR bgColor=#D0D0D0><TD colSpan=2 height=1></TD></TR>
+<TR bgColor=#D0D0D0><TD colSpan=2 height=1></TD></TR>
+<TR bgcolor=#F0F0F0><TD height=22 colspan=2><div class=malign><img src=http://www.pudn.com/images/folderopen.gif> 相关类别</div></TD></TR>
+<TR bgColor=#D0D0D0><TD colSpan=2 height=1></TD></TR>
+</table>
+</div>
+<div class="sidebar">
+<p>
+·<A href="/downloads340/doc/fileformat/detail1488408.html" target=_blank>国产芯片，清华同方RFID HTM3060芯</A><BR>
+·<A href="/downloads344/doc/fileformat/detail1503399.html" target=_blank>Java exercise1
+Descripciуn - Pa</A><BR>
+·<A href="/downloads336/doc/fileformat/detail1474357.html" target=_blank>这是一段ms430的单片机程序，主要是</A><BR>
+·<A href="/downloads338/doc/fileformat/detail1480699.html" target=_blank>华为的编程规范与范例   对有期望去</A><BR>
+·<A href="/downloads340/doc/fileformat/detail1485522.html" target=_blank>FIR滤波器设计的一些论文资料，对于</A><BR>
+·<A href="/downloads338/doc/fileformat/detail1480724.html" target=_blank>数据挖掘中CURE聚类算法研究，对CUR</A><BR>
+·<A href="/downloads338/doc/fileformat/detail1480706.html" target=_blank>The sigma delta conversion techni</A><BR>
+·<A href="/downloads340/doc/fileformat/detail1485507.html" target=_blank>学习ADO.NET的中文手册，里面讲解了</A><BR>
+·<A href="/downloads340/doc/fileformat/detail1485400.html" target=_blank>file-001 http://en.pudn.com/downl</A><BR>
+·<A href="/downloads339/doc/fileformat/detail1485240.html" target=_blank>一个基于ＪＳＰ的在线考试系统的部</A><BR>
+·<A href="/downloads339/doc/fileformat/detail1485235.html" target=_blank>一个基于JSP的在线考试系统、、、、</A><BR>
+·<A href="/downloads339/doc/fileformat/detail1485231.html" target=_blank>一个基于JSP的在线考试系统的部分页</A><BR>
+·<A href="/downloads339/doc/fileformat/detail1485228.html" target=_blank>一个基于JSP的在线考试系统的jsp页</A><BR>
+·<A href="/downloads339/doc/fileformat/detail1484640.html" target=_blank>现代通信 习题答案
+现代通信 习题</A><BR>
+·<A href="/downloads339/doc/fileformat/detail1483527.html" target=_blank>六个数码管从00:00:00开始计数，0.0</A><BR>
+·<A href="/downloads339/doc/fileformat/detail1483522.html" target=_blank>bdsp assignment related problems </A><BR>
+·<A href="/downloads339/doc/fileformat/detail1483520.html" target=_blank>bdsp assignment related problems </A><BR>
+·<A href="/downloads339/doc/fileformat/detail1483518.html" target=_blank>Please read your package and desc</A><BR>
+·<A href="/downloads339/doc/fileformat/detail1483517.html" target=_blank>Please read your package and desc</A><BR>
+·<A href="/downloads339/doc/fileformat/detail1483511.html" target=_blank>assignmentPlease read your packag</A><BR>
+·<A href="/downloads74/doc/fileformat/detail264581.html" target=_blank>FPGA很有价值的27实例.rar
+包括 LE</A><BR>
+·<A href="/downloads/ebook/file_format/detail1477.html" target=_blank>photoshop图像文件格式说明</A><BR>
+·<A href="/downloads92/doc/fileformat/detail353291.html" target=_blank>全面介绍mpeg2 ts流，使读者能够全</A><BR>
+·<A href="/downloads15/doc/fileformat/detail59223.html" target=_blank>某软件公司的软件开发文档（实用）</A><BR>
+·<A href="/downloads96/doc/fileformat/detail393398.html" target=_blank>包内提供了Contourlet和Wavelet变换</A><BR>
+·<A href="/downloads68/doc/fileformat/detail244182.html" target=_blank>GPRS sim300模块的详细资料齐全正在</A><BR>
+·<A href="/downloads62/doc/fileformat/detail213720.html" target=_blank>基于内容的图像检索中的一些关键环</A><BR>
+·<A href="/downloads86/doc/fileformat/detail331111.html" target=_blank>本人平时收集的惯性导航算法的论文</A><BR>
+·<A href="/downloads31/doc/fileformat/detail100217.html" target=_blank>这个是WINDRIVER的教程,讲述了如何</A><BR>
+·<A href="/downloads62/doc/fileformat/detail218703.html" target=_blank>关于移动机器人路径规划的ppt，参考</A><BR>
+·<A href="/downloads119/doc/fileformat/detail507871.html" target=_blank>sim300 原理图 GSM/GPRS 的硬件设计</A><BR>
+·<A href="/downloads83/doc/fileformat/detail318909.html" target=_blank>s3c2440多扩展原理图包括多网口与16</A><BR>
+·<A href="/downloads84/doc/fileformat/detail322043.html" target=_blank>蚁群算法基本原理，改进蚁群算法等</A><BR>
+·<A href="/downloads92/doc/fileformat/detail358276.html" target=_blank>opencv中用到的harr训练的详细介绍,</A><BR>
+·<A href="/downloads77/doc/fileformat/detail293101.html" target=_blank>典型的PID处理控制程序采用PID-PD算</A><BR>
+·<A href="/downloads61/doc/fileformat/detail212086.html" target=_blank>小波用语语音去噪声，matlab实现，</A><BR>
+·<A href="/downloads37/doc/fileformat/detail117905.html" target=_blank>详细描述关于U盘的文件系统的开发，</A><BR>
+·<A href="/downloads27/doc/fileformat/detail85835.html" target=_blank>一个RFC3261的中文版本，关于SIP协</A><BR>
+·<A href="/downloads27/doc/fileformat/detail85837.html" target=_blank>这个是关于OSIP开发手册的中文版本</A><BR>
+·<A href="/downloads90/doc/fileformat/detail342364.html" target=_blank>研究数学形态学的二值形态学、灰度</A><BR>
+</TBODY></TABLE>
+</p>
+</div></div>
+<div class="footer" align="center">
+<a href=mailto:programsalon@hotmail.com>联系站长</a> · <a href=/comment.asp?type_id=1010 target=_blank rel="nofollow">版权投诉</a> · <a href=/comment.asp?type_id=1010 target=_blank rel="nofollow">网站修改建议</a><br>
+</span>  &copy; 2004-2010 <a href=http://www.pudn.com><font color=red>pudn.com</font></a> 湘ICP备07000446<br>
+<script src="http://s117.cnzz.com/stat.php?id=1236358&web_id=1236358&show=pic" language="JavaScript" charset="gb2312"></script>
+<script src="http://www.pudn.com/inc/tail.js" language="JavaScript"></script>
+</body>
+</html>

@@ -1,0 +1,516 @@
+/*---------------Userbar------------------------*/
+html body center div#usrbar{
+  height:20px!important;line-height:20px!important;
+}
+html body center div#usrbar,html body center div#usrbar a,html body center div#usrbar a:link,html body center div#usrbar a:visited,html body center div#usrbar nobr{
+  color:#666!important;
+  text-decoration:none!important;
+  background:url(http://hiphotos.baidu.com/%BC%AB%BC%F2%D0%CD/pic/item/c055f1ca36ae823cbf09e6c8.jpeg) repeat-x!important;
+  -moz-opacity:1!important;
+  filter:none!important;
+}
+html body center div#usrbar a:hover{
+  color:#999!important;
+}
+img.down-arrow{
+  border:1px solid #888888!important;filter:gray!important;
+  background:url(http://.jpeg) no-repeat 50% 50%
+}
+#hi_index{}
+#nav_extra .top a,#nav_extra .body a{
+  color:#666666!important;
+  text-decoration:none!important
+}
+html body center div#ft{
+ color:#96B6DC!important;
+}
+
+html{overflow-x:hidden;
+scrollbar-face-color: #F2F2F2; 
+scrollbar-shadow-color: #D2D4D4; 
+scrollbar-highlight-color: #FFF; 
+scrollbar-3dlight-color: #D2D4D4; 
+scrollbar-darkshadow-color:#FFF; 
+scrollbar-arrow-color:#D2D4D4; 
+scrollbar-base-color:#F2F2F2; 
+scrollbar-track-color:#FFF;}/*网页背景主体颜色*/
+
+/*--------------Body全局----------------*/
+body{ 
+  margin:0; 
+  padding:0px; 
+  overflow-x:hidden; 
+  color: #333; 
+  background:#F2F0CA url(http://hiphotos.baidu.com/mubanceshi/pic/item/0cf13a191ce5c85fdbb4bda1.jpeg);
+}
+
+/*-------------定义超级链接文字默认样式------------------*/
+a:link,a:visited {
+   font-size: 12px; color: #62431b; text-decoration: none;
+}
+a:hover{ 
+  font-size: 12px; color: #62431b; text-decoration: underline;
+}
+
+/*-----------------全局分隔线设置--------------------*/ 
+div.line {
+ background:url(http://hiphotos.baidu.com/mubanceshi/pic/item/57647545b16f1a03cefca3ea.jpeg) repeat-x;
+border:none;
+margin:8px 0px 0px 0px;
+}/*定义分界线默认样式*/ 
+
+/*----------------空间主体---------------------*/
+#main{
+  background:url(http://hiphotos.baidu.com/mubanceshi/pic/item/d7c0ce335fd315dd1b4cff3b.jpeg) no-repeat 50% 0%; 
+  margin: -0px 0px -30px 0px!important; 
+  padding: 0px 0px 57px 0px!important;  
+}/*底部背景*/
+
+/*------------空间名称和简介区域---------------*/ 
+#header {
+  height:450px;
+  background: url(http://.jpg) no-repeat 50% 0%;
+} 
+#header div.lc{
+}
+#header div.tit{
+  color:#fff;
+  font-size:20px;
+  line-height:30px;
+  font-weight:normal;
+  top:50px;
+  left:100px;
+}
+#header div.tit a.titlink,#header div.tit a.titlink:visited{
+  color:#fff;
+  font-size:20px;
+  line-height:30px;
+  text-decoration:none;
+  font-weight:normal;
+  font-family:"微软雅黑"
+}
+#header div.desc { 
+  top:80px; 
+  left:120px; 
+  color: #fff;
+  font-size:13px; 
+  text-align:left;
+  line-height: 25px;
+}
+
+/*--------------Navigation----------------*/
+#tabline {display:none}/*TAB菜单下方的横线*/ 
+#tab { 
+  LEFT:400px;TOP:420px; 
+  color:#7E752A;
+  FONT-SIZE: 14px;
+}
+#tab A.on { 
+  COLOR: #fff;
+  FONT-SIZE: 14px;
+  text-decoration:none ;
+  background:#7E752A;
+}
+#tab A.on:link,#tab A.on:visited  { 
+  COLOR: #fff;
+  FONT-SIZE: 14px;
+}
+#tab A.on:hover { 
+  COLOR:#fff;
+  FONT-SIZE: 14px;
+  background:#7E752A;
+}
+#tab SPAN { 
+  DISPLAY: none
+}
+#tab A:link,#tab A:visited { 
+  FONT-SIZE: 14px; 
+  COLOR: #7E752A;
+  text-decoration:none  
+}
+#tab A:hover { 
+  FONT-SIZE: 14px; 
+  COLOR: #7E752A; 
+  BACKGROUND:url(http://imgsrc.baidu.com/css/pic/item/70fc1b344ad56c91d1a2d353.jpg) no-repeat 
+}
+
+/*--------------内容区域----------------------*/  
+.stage{ 
+  background-image: url(http://.jpg);
+ background-repeat: repeat-y; background-position: center top; margin:0px;
+ text-align:center;
+ margin:0 auto;
+ margin-bottom:-40px
+ }
+ 
+.stagepad{
+  width:960px;
+  margin:0 auto;
+  position:relative;
+  margin-bottom:40px;
+}
+
+#layout{
+  margin:0 auto;
+  width:960px;
+  position:relative;
+}
+#layout td.c2t2,#layout td.c3t2,#layout td.c4t2{
+  width:15px;
+  background:url(http://.jpeg) repeat-y 50% 0%;
+}
+
+/*其它区域(即访问量等信息)*/ 
+#comm_info{font-family:Arial;text-align:center;font-size:12px;} /*主体*/ 
+#comm_info div.line{display:none}/*分界线*/ 
+#comm_info a {font-size:12px;}/*链接*/ 
+#comm_info .modbox {font-size:12px;}
+#comm_info .modbox div img{display:none}
+
+/*页码区域*/ 
+
+/*----------------模块----------------*/ 
+.mod {
+ margin-bottom:0px;
+}
+.modhandle{cursor:move}
+.modth{
+ height:25px;
+}
+.modhead{
+ padding:4px;
+}
+.modopt {padding:4px 4px 0 0}/*模块操作区(如写新文章)*/ 
+
+.modtit, a.modtit, a.modtit:visited{
+ color:#7E752A;
+ font-size:13px;
+ font-weight:bold;
+ text-decoration: none;
+}/*模块标题区(如文章列表)*/ 
+
+.modact{font-size:12px}
+a.modact:link{}
+a.modact:visited{} /*操作文字链接(如文章列表)*/ 
+
+.modtl {
+  background:url(http://hiphotos.baidu.com/mubanceshi/pic/item/4e73952ca7ee57c98a13999d.jpeg) no-repeat 100% 100%;
+  width:5px;
+  height:25px;
+}
+.modtc {
+  background:url(http://hiphotos.baidu.com/mubanceshi/pic/item/ad7f6bec32229d0262d09f9d.jpeg) repeat-x 0% 100%;
+}/*模块中上背景*/ 
+.modtr {
+  background:url(http://hiphotos.baidu.com/mubanceshi/pic/item/36b3a127d8e10926918f9d9d.jpeg) no-repeat 0% 100%;
+  width:5px;
+  height:25px;
+}/*模块右上角背景*/ 
+
+.modbox{
+  padding:10px;
+  background:#fff;
+  border-left:1px solid #C3BD5B;
+  border-right:1px solid #C3BD5B;
+} /*模块内容区*/ 
+.modbl {
+  background:url(http://hiphotos.baidu.com/mubanceshi/pic/item/de7035032dbe5ec908fa939d.jpeg) no-repeat 100% 0%;
+  width:5px;
+}/*模块左下角背景*/ 
+.modbc {
+  background:url(http://hiphotos.baidu.com/mubanceshi/pic/item/b45a933de6a6a7cb3d6d979d.jpeg) repeat-x 0% 0%;
+}/*模块中下背景*/ 
+.modbr {
+  background:url(http://hiphotos.baidu.com/mubanceshi/pic/item/61f4944ea06a2f2cb3de059d.jpeg) no-repeat 0% 0%;
+width:5px;
+}/*模块右下角背景*/ 
+ 
+
+/*-------------------------文章区域----------------------------*/ 
+#m_blog div.tit{
+ font-weight:bold;
+ line-height: 20px;
+ text-indent: 10px;
+ text-decoration: none;
+ border-left:5px solid #7E752A;
+}/*文章标题*/  
+#m_blog div.tit a,#m_blog div.tit a:visited {
+  font-size:14px;
+  text-decoration: none;
+}
+#m_blog div.date{
+  margin:0px 0 8px 0;
+  text-indent:10px;
+  font-size:10px;
+  font-family:Verdana;
+  text-align:left;
+  border-left:5px solid #7E752A;
+}/*文章发表日期*/ 
+#m_blog div.cnt{
+ color:#625b49;
+ line-height:20px;
+ font-size:14px
+}/*文章内容*/ 
+#m_blog div.cnt a{
+  color:#625b49;text-decoration:underline
+}/*文章内容中的链接*/ 
+#m_blog div.more{margin:14px 20 16px 0;
+ text-align:right;
+ font-weight:bold;
+}
+#m_blog div.more a {font-size:12px}/*阅读全文链接*/ 
+#m_blog div.more a:visited{}
+#m_blog div.opt {font-size:12px}/*文章操作区(如编辑,评论等)*/ 
+#m_blog div.opt a {font-size:12px}/*文章操作链接*/ 
+#m_blog div.opt a:visited{}
+#m_blog div.line {
+}/*分界线*/ 
+#m_blog div.none {padding:100px 0 100px 0;font-size:12px}/*无文章提示信息*/ 
+
+/*个人档案区域*/ 
+#m_pro .wapper nobr {
+}
+#m_pro div.line {
+ background:none; 
+ border:none;
+ }
+
+#phlist div.tmp a{color:#EDDCB8}
+
+/*留言板*/
+#mod_board{ }/*这里是模块容器的定义*/
+
+div#m_comment_post input{}
+div#m_comment_post input#A,div#m_comment_post input#B{}
+
+.EditorContainer{}/* 留言板调用文字输入区 */
+
+/*相册区域*/ 
+#m_album div.image {text-align:center}/*照片*/ 
+#m_album div.page {font-size:12px;text-align:center}
+#m_album div.page a{font-size:12px}
+#m_album div.page a:visited{}
+
+/*友情链接区域*/ 
+#m_links div.item {
+ font-size:12px;
+ padding-left: 8px;
+ background-image: url(http://imgsrc.baidu.com/css/pic/item/011abaf426fa15c97709d753.jpg);
+ background-repeat: no-repeat;
+ background-position: left top;
+ line-height:16px;
+}/*子项*/ 
+#m_links div.item a:link, a:visited { font-size:12px;}/*名称(链接)*/ 
+#m_links div.item a:hover{}
+#m_links div.line {margin-top:5px;line-height:8px;}/*分界线*/ 
+
+/*文章分类*/ 
+#m_artclg div.item {
+ font-size:12px;
+ padding-left: 25px;
+ background-image: url(http://imgsrc.baidu.com/css/pic/item/011abaf426fa15c97709d753.jpg);
+ background-repeat: no-repeat;
+ background-position: left top;
+ line-height:18px;
+}/*子项*/ 
+
+/*文章存档*/ 
+#m_filed div.item{
+ font-size:12px;
+ padding-left: 25px;
+ background-image: url(http://imgsrc.baidu.com/css/pic/item/011abaf426fa15c97709d753.jpg);
+ background-repeat: no-repeat;
+ background-position: left center;
+}
+
+/*背景音乐模块*/ 
+#mod_bgmusic.mod{}
+
+/*日历模块*/
+div#cals{background:none;border:none;text-align:center;width:100%;padding:2px;}/*日历主体背景,边框*/
+div#cals .cal_body,#cals .cal_mth{font-family:Arial;font-size:12px;width:100%;}/*除年月控制器外的日期部分,包括周和一般日期*/
+div#cals .cal_yr table{width:30px}/*年,月表格*/
+div#cals .cal_yr td{
+
+ font-size:12px;
+ color:#EDDCB8;
+ background:none;
+ padding:1px;
+ white-space:nowrap;
+ line-height:15px
+}/*年,月单元格*/
+div#cals .cal_yr .cal_pre{font-size:10px;padding-left:10px}/*上一月箭头(正常)*/
+div#cals .cal_yr .cal_nxt{font-size:10px;padding-left:10px}/*下一月箭头(正常)*/
+div#cals .cal_yr .cal_pre_ovr{font-size:10px;padding-left:10px;cursor:pointer}/*上一月箭头(鼠标悬停)*/
+div#cals .cal_yr .cal_nxt_ovr{font-size:10px;padding-left:10px;cursor:pointer}/*下一月箭头(鼠标悬停)*/
+
+div#cals tr{}
+div#cals td{text-align:center;font-family:Arial;font-size:12px;padding:3px;line-height:14px;white-space:nowrap}/*日期*/
+div#cals .today{
+ padding:2px;
+ color: #EDDCB8;
+ border:1px solid #EDDCB8;
+ font-weight:bold;
+ background--color:#EDDCB8!important;
+}/*今日*/
+
+div#cals .cal_week td{font-weight:bold;font-size:12px;font-family:Tahoma}/*周*/
+div#cals .cal_date{
+ color:#EDDCB8
+}/*普通日期*/
+div#cals .cal_sa{
+ color:#EDDCB8
+}/*周六标题样式*/
+
+div#cals .cal_su{
+ color:#EDDCB8
+}/*周日标题样式*/
+div#cals .not_come{
+ color:#EDDCB8
+}/*今日之后的日期*/
+div#cals .cal_before,#cals .cal_after{visibility:hidden}/*除当前月之外的日期*/
+div#cals *.cal_active{
+ color:#EDDCB8;
+ text-decoration:none;
+ font-weight:bold;
+}/*有更新的日期效果*/
+div#cals *.cal_select{
+ padding:2px;
+ border:1px solid #EDDCB8;
+ color:#EDDCB8;
+ text-decoration:underline
+}/*有更新的日期鼠标移上效果*/
+div#cals .yr_normal{border:none;line-height:14px;}
+div#cals .mth_normal{border:none;line-height:14px;}/*年,月选择器普通状态*/
+
+div#cals .yr_sel,#cals .mth_sel{
+ color: #EDDCB8;
+ border:1px solid #EDDCB8;
+ padding:0;
+ line-height:14px;
+ cursor:pointer
+}/*年,月选择器鼠标移上状态*/
+div#cals .cal_roll{
+ border:1px solid #EDDCB8;
+ position:absolute;
+ display:none;
+ font-size:12px;
+ font-family:Arial;
+ line-height:18px
+}/*年月选择列表*/
+div#cals .cal_roll .normal{background:none;}/*年月选择列表选择项目普通状态*/
+div#cals .cal_roll .msover{
+ color: #EDDCB8;
+ cursor:pointer;
+}/*年月选择列表选择项目鼠标移上效果*/
+div#cals .cal_pp_cnt{
+ color: #EDDCB8;
+ padding:3px;
+ margin-right:20px;
+ font-size:12px;
+ font-family:Arial;
+ white-space:nowrap;
+ border:1px solid #EDDCB8;
+}/*有更新的日期的tip提示层*/
+
+/*宠物设置*/
+#m_petcard, #m_petcard a{color:#EDDCB8} /*专区内所有链接的颜色设置*/
+#m_petcard div.petheader{} /*把宠物头像换了张图片*/
+#m_petcard div.petheader img{} /*隐藏宠物头像*/
+#m_petcard div.line{ 
+ border-top-width: 1px;
+ border-top-style: dotted;
+ border-top-color: #EDDCB8;} /*宠物专区分隔线的设置*/
+#mod_pet_setting, #mod_pet_setting a{color:#EDDCB8} /*宠物设置模块所有链接颜色设置*/
+#mod_pet_setting div.line{
+ border-top-width: 1px;
+ border-top-style: dotted;
+ border-top-color: #EDDCB8;
+} /*宠物设置内分隔线的设置*/
+#mod_pet_info, #mod_pet_info a{color:#EDDCB8} /*宠物展示模块所有链接颜色设置*/
+#mod_pet_record,#mod_pet_record a{color:#EDDCB8} /*谁和它玩过模块所有链接颜色设置*/
+
+/*模版预览条*/
+#set_cs{
+ position:absolute!important;
+ top: 30px; 
+}
+
+#spBlogCmtText {width:300px!important}/*评论框图*/ 
+
+/*http://hi.baidu.com/sxsy8847*//*http://hi.baidu.com/sxsy8847*/
+/*http://hi.baidu.com/sxsy8847*//*http://hi.baidu.com/sxsy8847*/
+
+/*-------------新增----------------*/
+/*---------------------最新动态---------------------------*/
+#m_event .nav span {
+  color:#000;
+  font-weight:bold;
+}
+#m_event .nav span.lk {
+  color:#88836D!important;
+  text-decoration:none;
+}
+#m_event .alter td {
+  background-color:#F2F6F7;
+}
+#m_event .time {
+  color:#333
+ }
+#m_event .line{
+  border:none;
+  margin-top:3px;
+  line-height:3px;
+  height:3px;
+  background:url(http://hiphotos.baidu.com/mubanceshi/pic/item/f3621762fb9670f8e6113a0e.jpeg) repeat-x 0% 100%;
+}/*-----最新动态在窄栏下的分隔线效果-----*/
+
+.ToolbarItem .img {
+  color:#333!important
+}
+
+.lk{
+  color:#88836D;
+  text-decoration:none;
+}
+
+/*----------------------用户装扮中心----------------------------*/
+#mySpace .c2t3 .model{
+  margin-right:10px!important;
+}
+
+#mySpace td.mylayout{
+ color:#333!important;
+}
+
+/*---------------------模板预览条----------------------------*/
+#set_cs td,#set_cs td b{color:#666}
+#set_cs td,#set_cs td b{color:#666}
+#start {
+  color:#333
+}
+
+#m_albumlist div.line{
+  border:none;
+}
+
+/*-------------我在百度的分隔线定义------------------*/
+#mod_inbaidu ul {
+  border:none;
+  background:url(http://hiphotos.baidu.com/mubanceshi/pic/item/f3621762fb9670f8e6113a0e.jpeg) repeat-x 0% 100%;
+}
+#mod_inbaidu .list {
+  border:none;
+}
+
+#cmtArea a {
+  font-weight:bold;
+}
+#m_comment div.item,#m_comment div.item a.cnt{
+} 
+
+#m_aboutme div.cnt a{
+  text-decoration:underline!important;
+}
+
+ 

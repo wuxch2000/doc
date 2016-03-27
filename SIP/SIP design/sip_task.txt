@@ -1,0 +1,69 @@
+台湾SIP终端叉簧类业务支持
+俄罗斯ComStar的SIP相关需求开发
+SIP，H248协议统计增加链路可用性和链路负荷统计
+SIP支持TCP
+SIP终端支的匿名呼叫功能改进
+PCCW一期：SIP/XML压缩
+PCCW一期：前台SIP基本功能
+SORM监听支持SIP/H323用户
+PCCW:SIP注册鉴权
+PCCW:SIP多事务处理
+PCCW:SIP18x,200重发/ISUP缓存
+PCCW:SIP订阅处理
+ZXSS10 SS1b V2.01.60_巴西VIVO项目被叫付费标志扩充UP10之间的SIP接口开发
+PCCW：SIP Reason头部的解码和编码
+ZXSS10 SS1b V2.01.60_SORM监听支持SIP/H323用户（多方部分）功能开发
+ZXSS10 SS1b V2.01.52 SIP用户扩容前台部分
+ZXSS10 SS1b V2.01.52 SIP用户混放前台部分
+SS容灾TG不断话SIP保活检测的配合
+SIP注册刷新不通知GNIC 
+SIP终端用户实现插簧类补充业务（盲转）概要设计
+SIP终端用户实现拍叉簧补充业务（三方）详细设计
+SIP终端用户实现拍叉簧补充业务（询问转）详细设计
+SIP用户补充业务Sorm监听入501版本
+PCCW Phase2a:SIP模块分析
+PCCW_SS容灾恢复后不允许SIP-I呼叫失败
+升级不断话倒换完善SIP部分编码
+Phase2a I期 SIP设计
+升级不断话集成测试：升级不断话SIP倒换完善
+菲律宾Globe的WiMax+SIP测试任务支持
+SIP遇忙回叫
+SIP用户闹钟功能
+183带SDP时,SIP-I携带OBCI且PD=8
+Phase2a整改:SIP2.0注册用户数据导出工具
+SIP大容量节点端口范围扩充
+SIP在INVITE消息中增加Route头部
+香港宽频测试支持：SIP基本呼叫
+香港宽频测试支持：SIP用户参与补充业务
+土耳其TTnet:SIP CPE B号码支持(一期)
+土耳其TTNET--SIP漫游限制
+PCCW：支持SIP-SN设备多IP
+PCCW:版本支持SIP 2.0终端重拨
+SIP-I对伊朗特色ISUP补充业务的封装(恶意呼叫,中继提供,脉冲计费)
+Phase2a整改:SIPI和C7入局被叫号码没有地址全标示的处理
+TTnet SIP号码支持Bxxx
+TTNet 559话单中填写真实SIP CPE IP地址
+PCCW SIP server测试项目支持主叫名称显示 
+PCCW SIP SERVER:SIP用户支持CFU来电reminder提醒
+PCCW SIP SERVER:TOS业务需求
+PCCW SIP SERVER:长途、传真、900信息台业务锁
+PCCW SIP SERVER:免打扰支持输入密码接通
+PCCW SIP SERVER:视频业务特殊需求
+PCCW SIP SERVER:bill payment业务需求
+SIP用户摘机支持special dial tone
+PCCW SIP SERVER:SIP用户支持立即热线、延时热线
+SIP支持MWI，采取Subscribe方式(概要设计)
+俄罗斯伏尔加电信漫游功能SIP用户优化
+SIP支持MWI，采取Subscribe方式（透传）
+SIP PBX支持并发控制合入61版本
+Starhub SIP Forking
+土耳其TT:SIP支持大小写B字母
+SIP PBX的前转业务需求
+Number Conversion with FC3 trigger of SIP-SN
+SS1b支持SIP TEL格式
+SIP forking单用户拒绝后拆除所有呼叫
+PCCW: SIP-I ISUP VERSION支持PCCW标识
+SIP节点动态闭塞功能
+挪威VPBX在SIP协议中扩展NPI和NOA功能
+印度TCL 将SS上中继群号通过SIP协议传递给UP10
+SIP漫游改进

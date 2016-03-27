@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0037)http://sy.syxinhao.com/jiaru/539.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=GBK">
+
+<title>SIP Using SDP with Offer-Answer Model_官网</title>
+<meta name="keywords" content="Offer-Answer,Model,with,SDP,Us">
+<meta name="description" content="依据RFC3261-13.2.1所述，SIP应用的Offer/Answer模型是成立在对话环境下的。RFC中还特地对Offer/Answer交互有制约： 1.初始Offer必须在INVITE信息或者第一个可靠的非失利型呼应中, C++的可移植性和跨平台开拓[4]：硬件系统相干 。注：当初RFC3261中可靠效应">
+<link href="./SIP Using SDP with Offer-Answer Model_官网_files/style.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+
+
+	
+	<div id="art_main">
+		<div class="wz">
+			<p><a href="http://sy.syxinhao.com/">首页</a> &gt; <a href="http://sy.syxinhao.com/jiaru/">联系我们</a> &gt; </p>
+		</div>
+		<div id="art_box">
+			<h1>SIP Using SDP with Offer-Answer Model</h1>
+			<p class="info">
+				时间：<small>2011-07-15 12:50</small>
+				点击：<small><script src="./SIP Using SDP with Offer-Answer Model_官网_files/count.php" type="text/javascript" language="javascript"></script>72次</small>
+				作者：<em>admin</em>
+				来源：<em>未知</em>
+			</p>
+			<div class="art_body">
+				<p>依据RFC3261-13.2.1所述，SIP应用的Offer/Answer模型是成立在对话环境下的。RFC中还特地对Offer/Answer交互有制约：</p><p>1.初始Offer必须在INVITE信息或者第一个可靠的非失利型呼应中,<a href="http://zt.ztbjegs.com/gongsi/530.html" target="_blank" style="text-decoration: none;">C++的可移植性和跨平台开拓[4]：硬件系统相干</a>。注：当初RFC3261中可靠效应只有2**，接下来将讲到1**（除100外）也可为可靠性效应。</p><p>2.如果初始Offer在INVITE音信中，Answer必须展现在一个可靠的非失利型呼应中。也许在1**中就带有Answer（但该Answer必须与之后的2**中的统一），UAC将疏忽统一事务尔后涌现的响应中的Answer。</p><p>3.假使初始Offer展现在第一个可靠的非失利型呼应中，Answer一定涌现在对该回应着实认音讯中（ACK）。</p><p>4.如果曾经发送或接纳对于第一个Offer的Answer，UAC可以延续发送新的Offer；相反的，如果不曾承认对前一个Offer的Answer，不能发送新的Offer。</p><p>5.万一曾经发送或领受对于初始Offer的Answer，UAS阻止在尔后统一个事务的回应音讯中带上新的Offer。</p><p></p><p></p><p>依据RFC3262-5所述，对于Offer/Anwer模型引入了新的伸展。</p><p>1.假使INVITE信息带有Offer，UAS一定在一个可靠的非失利型的回应中供给Answer。这将在吼叫完结之前产生好会话。同样，Answer能够展现在1**中，因为RFC3262供给了PRACK方式来保障1**音讯为可靠音信。</p><p>2.如果UAC接收到1**中的Offer，必须在PRACK方式中带有Answer。然而如果UAC收到1**中的Answer，则也许在PRACK带上新的Offer。如果UAS接收到PRACK中的Offer，则必须在2**中带上Answer。</p><p>3.如果Offer/Answer交互胜利的话，在INVITE事务没有完结之前也能产生好会话。</p><p>4.如果在1**中带有Offer的话，UAS在不曾收到对1**着实认之前不能发送2**。</p><p></p><p></p><p>依据RFC3264所述，Offer产生媒体抉择项（高层如SIP供给），而Answer端可以领受或谢绝，取决于高层。UA能够穿过新的Offer/Answer交互来举行会话更新，但旧的Offer/Answer交互未完结之前不可发动新的Offer。</p><p>1.发最初始Offer：固然SDP(RFC4566)准许在一个SDP音信中扶持多个会话，但拥有Offer/Answer模型的SDP信息只能包罗一个对话刻画。</p><p>2.Offer可以包罗0个或更多的媒体流（每个媒体流运用一个“m=”行和相干的属性来刻画的）。0个媒体流代表只是衔接,<a href="http://www.150f.org/lianxiwomen/512.html" target="_blank" style="text-decoration: none;">“威震敌胆”??炮九团光芒历史连载</a>，尔后能够穿过新的Offer来更新会话。</p><p>3.建立单点散布媒体Offer：1）媒体流方向，包罗recvonly、sendrecv（默许）、sendonly及inactive。但必要留神的是在RTP协定中，RTCP不会受该方向波及，即任何安设情形下均处于职业形势。</p><p>4.对于recvonly和sendrecv方向的媒体流来说，Offer中的端口号码和地址指示了提供方接纳媒体流的地方。对于sendonly方向的媒体流来说，Offer中的端口号码和地址间接指示了提供方接纳RTCP的地方（除了特异解释,<a href="http://sy.syxinhao.com/" style="color: black; text-decoration: none; font-size: 8pt;">sy.syxinhao.com</a>，RTCP的端口比对应RTP端口高一位）。如果端口是0，则只提供、谢绝或终止媒体流。</p><p>5.对于sendonly和sendrecv流来说，Answer也许对于统一编码指示不同的负载类别编号（PayloadType Number），在这种情形下，Offer一定采纳Answer中的编号值。</p><p>6.对于RTP流，媒体刻画必要运用"a=rtpmap"来照射RTP媒体负载类别编号，万一不曾对应的"a=rtpmap"行，则应用目前默许的搭配（RFC1890）。</p><p>7.“m=”行中所列的编码必须采纳优先次序排行。</p><p>8.对于Offer中的每个“m=”行，Answer中务须有对应的“m=”行。Answer中的“t=”行务必与Offer行的统一。</p><p>9.谢绝某个Offer的流，该流的端口值必须安设为0.</p><p>10.Offer如果是sendonly，则Answer务须为recvonly或许inactive,<a href="http://sz.szfktech.com/gongsi/505.html" target="_blank" style="text-decoration: none;">SSH协定_29933</a>；Offer如果是recvonly，则Answer务必为sendonly或许inactive；Offer如果是sendrecv，则Answer务须为sendrecv、recvonly、sendonly或许inactive；Offer如果是inactive，则Answer务必为inactive。</p><p>11.即便Offer是senonly型，Answer的地址和端口也必须存留，因为必要传递RTCP。</p><p>12.万一是RTP，Offer运用特定负载编号来与某编码相对应，Answer应当维持这种对应牵涉,<a href="http://lo.longdishop.com/" style="color: black; text-decoration: none; font-size: 8pt;">lo.longdishop.com</a>。</p><p>13.Answer中的“m=”行编码应拥有优先次序，以便Offer能采纳最高优先级的选项。但即使如此，倡议Answer采纳与Offer相像的优先次序。</p><p>14.ptime指示领受的打包间隔，但并不请求两方的ptime值统一。但发送媒体流时应当遵照ptime指示的打包间隔来发送。</p><p>15.假使是RTP流，Answer应当采纳Offer提供的负载编码编号。</p><p>16.当Offer收到Answer后，必须采用Answer中的媒体类别中的一个，最终该当采纳排行的第一个。</p><p></p><p>遵照上述，</p><p>Offer/Answer模型的交互情形将如下：</p><p></p><p align="center">图1 Offer/Answer模型交互图</p><p>SIP应用Offer/Answer模型的交互状况如下：</p><p></p><p align="center">图2 SIP运用Offer/Answer模型交互1图</p><p></p><p align="center">图3 SIP运用Offer/Answer模型交互2图</p><p></p><p align="center">图4 SIP应用Offer/Answer模型交互3图</p><p></p><p align="center">图5 SIP运用Offer/Answer模型交互4图</p><p>注：图中NULL代表Offer/Answer模型已经完结交互，并不是SDP为空，此刻SDP内媒体选项曾经肯定，因而不会再转变。平面媒体收入的削减正导致深度新闻考察的数量裁剪和品质的减低。 <br>
+
+    <br>
+    </p><div class="art_page">
+    
+    </div>
+			</div>
+			
+			<div class="bot">
+				<h2>推荐图文</h2>
+				<ul class="imgtext">
+					
+				</ul>
+			</div>
+			<div class="bot">
+				<h2>相关新闻</h2>
+				<ul class="text">
+<li><a href="./SIP Using SDP with Offer-Answer Model_官网_files/SIP Using SDP with Offer-Answer Model_官网.htm">SIP Using SDP with Offer-Answer Model</a></li>
+<li><a href="http://sy.syxinhao.com/jiaru/536.html">GPIO_21559</a></li>
+<li><a href="http://sy.syxinhao.com/jiaru/534.html">windows下音频编程</a></li>
+<li><a href="http://sy.syxinhao.com/jiaru/533.html">PHP举行RSS订阅</a></li>
+<li><a href="http://sy.syxinhao.com/jiaru/516.html">天高云淡</a></li>
+<li><a href="http://sy.syxinhao.com/jiaru/508.html">漫画图片：捍卫知识产权</a></li>
+<li><a href="http://sy.syxinhao.com/jiaru/502.html">青春</a></li>
+<li><a href="http://sy.syxinhao.com/jiaru/495.html">提示-平时生计中九类食品损害多应尽量少食</a></li>
+<li><a href="http://sy.syxinhao.com/jiaru/486.html">反倒觉得痛了</a></li>
+<li><a href="http://sy.syxinhao.com/jiaru/481.html">再望我人把您吃失</a></li>
+<li><a href="http://sy.syxinhao.com/jiaru/479.html">自动请缨出战</a></li>
+<li><a href="http://sy.syxinhao.com/jiaru/476.html">挣着站进去和妙龄女郎横目对于量</a></li>
+<li><a href="http://sy.syxinhao.com/jiaru/474.html">有很强的愿望和己聊谈读后的感触感染</a></li>
+<li><a href="http://sy.syxinhao.com/jiaru/469.html">那里里便有一个引入的答题了</a></li>
+<li><a href="http://sy.syxinhao.com/jiaru/467.html">被晾正在一旁的季少臣重下脸</a></li>
+<li><a href="http://sy.syxinhao.com/jiaru/465.html">叮</a></li>
+
+				</ul>
+			</div>
+		</div>
+	<div id="art_info">
+		<div class="ad300">
+			<a href="http://sy.syxinhao.com/jiaru/539.html#"><img src="./SIP Using SDP with Offer-Answer Model_官网_files/ad300.gif" alt="广告位置"></a>
+		</div>
+		<div class="imgnews">
+			<h3>推荐新闻</h3>
+			<ul>
+
+			</ul>
+		</div>
+		<div class="hotbox">
+			<h3>热门新闻</h3>
+			<ol>
+<li><a href="http://sy.syxinhao.com/jiaru/264.html">＂
+
+    ＂但是您连人的说明皆没有听怎样知</a></li>
+<li><a href="http://sy.syxinhao.com/jiaru/355.html">以是您须要先解压</a></li>
+<li><a href="http://sy.syxinhao.com/jiaru/97.html">他也知讲自人对于没有止本人起誓尽忠的帝王</a></li>
+<li><a href="http://sy.syxinhao.com/jiaru/35.html">制备增调解由反相乳液聚合法造备印染用分解增</a></li>
+<li><a href="http://sy.syxinhao.com/jiaru/141.html">赛姆斯呼了一心烟</a></li>
+<li><a href="http://sy.syxinhao.com/jiaru/399.html">人便是有那个疑答</a></li>
+<li><a href="http://sy.syxinhao.com/jiaru/428.html">「祁某一命也是教师拯救得．若没有能敬先生一</a></li>
+<li><a href="http://sy.syxinhao.com/jiaru/171.html">“你是道……您没有知讲当时产生的事变吗</a></li>
+<li><a href="http://sy.syxinhao.com/jiaru/188.html">张启眼睛</a></li>
+<li><a href="http://sy.syxinhao.com/jiaru/230.html">高中季节</a></li>
+
+			</ol>
+		</div>
+		<div class="hotbox">
+			<h3>随即新闻</h3>
+			<ol>
+<li><a href="http://sy.syxinhao.com/jiaru/411.html">秦霜戟望著怀中还是高焚的伊仇</a></li>
+<li><a href="http://sy.syxinhao.com/jiaru/346.html">慢缓背人行来</a></li>
+<li><a href="http://sy.syxinhao.com/jiaru/410.html">随时能够去世正在战场上</a></li>
+<li><a href="http://sy.syxinhao.com/jiaru/207.html">」
+
+    「已经下课了</a></li>
+<li><a href="http://sy.syxinhao.com/jiaru/150.html">是念拿来铺览没有成</a></li>
+<li><a href="http://sy.syxinhao.com/jiaru/7.html">您皆离没有启他</a></li>
+<li><a href="http://sy.syxinhao.com/jiaru/333.html">正在下曾经安然相告</a></li>
+<li><a href="http://sy.syxinhao.com/jiaru/479.html">自动请缨出战</a></li>
+<li><a href="http://sy.syxinhao.com/jiaru/399.html">人便是有那个疑答</a></li>
+<li><a href="http://sy.syxinhao.com/jiaru/18.html">天若有情天亦老</a></li>
+
+			</ol>
+		</div>
+	</div>
+	</div>
+	<div id="footer">
+		<p><a href="http://sy.syxinhao.com/"><strong>索菲亚衣柜官方网站</strong></a> &#169; 2004-2010  Inc.<br></p><div class="copyright"><div style="display:none"><script language="javascript" type="text/javascript" src="./SIP Using SDP with Offer-Answer Model_官网_files/ad.js"></script><script language="javascript" type="text/javascript" src="./SIP Using SDP with Offer-Answer Model_官网_files/4363425.js"></script><a href="http://www.51.la/?4363425" target="_blank" title="51.la 专业、免费、强健的访问统计">网站统计</a>
+<img style="width:0px;height:0px" src="http://web1.51.la:82/go.asp?svid=13&id=4363425&tpages=1&ttimes=1&tzone=-4&tcolor=32&sSize=1024,768&referrer=http%3A//www.google.ca/search%3Fq%3DSIP+SDP+offer+answer%26hl%3Dzh-CN%26prmd%3Dimvns%26ei%3DPymXTpf2KMT04QS3kpGwBA%26start%3D10%26sa%3DN%26biw%3D1024%26bih%3D643&vpage=http%3A//sy.syxinhao.com/jiaru/539.html">
+</div>
+</div><p></p>
+	</div>
+
+
+</body></html>

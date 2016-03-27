@@ -1,0 +1,251 @@
+cisco路由器基本命令配置 
+--------------------------------------------------------------------------------
+
+http://www.vlan9.com 作者: 2005-12-25 来源:www.bluestudy.net 浏览: 
+
+　　一·CISCO路由器简介
+　　
+　　1.1 CISCO IOS操作环境。
+　　有三种：
+　　ROM monitor > Failure of password recovery
+　　BootROM router(boot) > Flash image upgrade
+　　Cisco IOS router > Normal operation
+　　
+ 
+　　1.2 Command Modes命令模式。
+　　User EXEC Router> 普通级别
+　　Privileged EXEC Router# 系统管理级别（超级用户）
+　　Configuration mode Router(config)# 修改配置
+　　
+　　
+　　二、 配置前的准备工作
+　　
+　　2.1 用终端或仿真终端接入CONSOLE口 。
+　　
+　　终端或仿真终端配置信息如下：
+　　
+　　9600 baud 8 data bits no parity 2 stop bits (9600,8/N/2）
+　　
+　　2.2 用TELNET命令在网上进行设置。
+　　
+　　系统管理员可在网上用telnet address命令进行远程配置。
+　　
+　　三、 配置IP地址
+　　
+　　3.1 config命令行方式进行设置
+　　
+　　3.1.1 首先启动ROUTER 进入router > 模式。
+　　
+　　键入Enable 进入router # 模式
+　　
+　　然后键入config 进入router(config)# 模式
+　　
+　　3.1.2 选择要配置的路由器端口
+　　
+　　Router(config) # interface端口号
+　　
+　　进入端口设置状态 Router(config-if)
+　　
+　　此时用命令IP address <掩码>
+　　
+　　设定路由器端口IP地址
+　　
+　　四、 配置ip路由协议 (RIP ,OSPF ,BGP ,STATICS)
+　　
+　　在图中有路由器A和B，广域网通过router A 的s0/0/0和router B的s2/0/0相连，IP如下： 
+　　
+　　router A:
+　　
+　　E1:202.101.1.1/24
+　　
+　　S0/0/0:202.101.3.1/30
+　　
+　　router B:
+　　
+　　E1:202.101.2.1/24
+　　
+　　S2/0/0:202.101.3.2/30
+　　
+　　当我们设置路由器协议时，可根据方案的规定设置一种或多种协议。以下动态协议都是按最简单设置，复杂的配置可参考具体手册。
+　　
+　　4.1静态路由
+　　
+　　IP route 目的网络地址 子网掩码 端口号
+　　
+　　在router A上配router B的路由:
+　　
+　　IP route 202.101.2.0 255.255.255.0 202.101.3.2
+　　
+　　在router A上配router B的路由:
+　　
+　　IP route 202.101.1.0 255.255.255.0 202.101.3.1
+　　
+　　4.2 RIP2设置
+　　
+　　router A进行如下设置:
+　　
+　　router rip ;enable rip
+　　
+　　version 2 ;选择版本2
+　　
+　　network 202.101.1.0 ;相关子网地址
+　　
+　　network 202.101.3.0
+　　
+　　router B进行如下设置:
+　　
+　　router rip ;enable rip
+　　
+　　version 2 ;选择版本2
+　　
+　　network 202.101.2.0 ;相关子网地址
+　　
+　　network 202.101.3.0
+　　
+　　　
+　　
+　　4.3 OSPF设置
+　　
+　　router A:
+　　
+　　router ospf 200 ；enable ospf 进程号为200
+　　
+　　network 202.101.1.0 0.0.0.255 area 0 ； 相关子网地址及区域号
+　　
+　　network 202.101.3.0 0.0.0.3 area 0
+　　
+　　router B:
+　　
+　　router ospf 200 ；enable ospf 进程号为200
+　　
+　　network 202.101.2.0 0.0.0.255 area 0 ； 相关子网地址及区域号
+　　
+　　network 202.101.3.0 0.0.0.3 area 0
+　　
+　　　
+　　
+　　4.4 BGP设置
+　　
+　　router A:
+　　
+　　router bgp 100 ;enable bgp 设置自治域号
+　　
+　　network 202.101.3.0 mask 255.255.255.252 ；相关子网地址及子网掩码
+　　
+　　network 202.101.1.0 mask 255.255.255.0 ; 这些地址由bgp发到邻居路由器
+　　
+　　neighbor 202.101.3.2 remote-as 200 ；设置远程相连自治域边界路由器端口
+　　
+　　router B:
+　　
+　　router bgp 100 ;enable bgp 设置自治域号
+　　
+　　network 202.101.2.0 mask 255.255.255.252 ；相关子网地址及子网掩码
+　　
+　　network 202.101.1.0 mask 255.255.255.0 ; 这些地址由bgp发到邻居路由器
+　　
+　　neighbor 202.101.3.1 remote-as 200 ；设置远程相连自治域边界路由器端口
+　　
+　　　
+　　
+　　五、 radius认证的设置
+　　
+　　5.1 radius的简述
+　　
+　　RADIUS的全称为(Remote Access Dail-In User Service),它是对远程拨号用户访问进行认证的一种协议。主要进行Authentication Authorization Accounting (AAA) 三方面的工作。
+　　
+　　5.2 radius的配置
+　　
+　　具体配置如下：
+　　
+　　aaa new-mode ;enable radius
+　　
+　　radius-server host ;指明radius server在网上的地址
+　　
+　　radius-server key ;建立一个网上传输密
+　　
+　　aaa authentication login default radius local ;进行login认证，若radius server未找到从本地数据库内查找
+　　
+　　aaa authentication ppp default radius local
+　　
+　　aaa authorization network radius local ;授权检测
+　　
+　　aaa accounting network start-stop radius ;计帐检测
+　　
+　　六、 路由器软件升级方法
+　　
+　　6.1 改变操作环境
+　　
+　　在global config mode设置: config -reg 0x2101
+　　
+　　reload 进入Boot Rom 模式：router(boot)>
+　　
+　　6.2 运行tftp server
+　　
+　　在网上运行tftp server，使升级文件可以传输。
+　　
+　　6.3 升级版本
+　　
+　　命令如下：
+　　
+　　copy tftp flash ;将tftp server上的文件传入路由器的flash memoy中
+　　
+　　copy flash tftp ; 将flash中的文件备份到tftp server中
+　　
+　　七、 路由器配置的其它事项
+　　
+　　7.1拨号用户的配置。
+　　
+　　cisco 2509/2511的异步串行通讯口在配置modem时，modem需设置成自动应答方式。具体方法如下：
+　　
+　　用超级终端进入modem AT 命令方式，键入ats0=1 设置自动应答方式，然后键入at&w 将设置写入寄存器。
+　　
+　　7.2 RIP & BGP的设置
+　　
+　　当一个运行RIP路由协议的子网，做为一个自治域，用BGP协议接入另一自治域时。此子网内所有路由器需添加参数： ip classless 。同时在与边界路由器直接相连的路由器上需添加一个缺省网关。
+　　
+　　7.3 v.35电缆直连的设置
+　　
+　　在相关的端口上设置时钟速率：clock rate < speed> .
+　　
+　　7.4 loopback端口的设置
+　　
+　　loopback端口是一个虚拟端口，端口状态始终处于UP。通过它可以使由BGP相连的AS之间始终保持连系，不会由于边界路由器端口状态的改变而发生变化。其具体配置如下：
+　　
+　　interface loopback 
+　　
+　　ip address IP地址 子网掩码
+　　
+　　八、常见问题
+　　
+　　8.1如何检测网络是否通畅？
+　　
+　　在网络主机上采用命令ping 来逐端检测网端。
+　　
+　　8.2如何查看路由器配置信息？
+　　
+　　在EXEC模式下用show config命令。
+　　
+　　8.3如何查看路由器路由信息？
+　　
+　　在EXEC模式下用show ip route 命令。
+　　
+　　8.4如何查看路由器端口信息？
+　　
+　　EXEX模式下用show int <端口号> 命令。
+　　
+　　8.5为什么端口协议已经配置，状态仍然是down?
+　　
+　　在CONFIG模式下，选择该端口，执行no shutdwon命令。
+　　
+　　8.6 config模式有几种状态，对应那些操作？
+　　
+　　config模式有以下几种状态：
+　　
+　　· globle config 全局配置操作 exec模式键入config t
+　　
+　　· interface config 端口配置操作 config模式键入int <端口号>
+　　
+　　· line config 线路配置操作 config模式键入line <线路号>
+　　
+　　· router config 路由配置操作 config模式键入router<路由协议> 

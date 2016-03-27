@@ -1,0 +1,3 @@
+I'm a little nervous about recent interview, so maybe there are some error answers I just made. Such as flash event, SIP should using REFER message to indicate that, and Call hold should using RE-INVITE to change media. As I have said, there's no standard definition to these scenarios.
+
+Anyway, Thank for your call.

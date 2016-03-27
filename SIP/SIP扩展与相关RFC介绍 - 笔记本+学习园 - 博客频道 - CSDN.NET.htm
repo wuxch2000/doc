@@ -1,0 +1,630 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0052)http://blog.csdn.net/netnote/article/details/3379004 -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>SIP扩展与相关RFC介绍 - 笔记本+学习园 - 博客频道 - CSDN.NET</title>
+
+<meta name="description" content="SIP扩展与相关RFC介绍  Version 1.02008-9-15 SIP扩展综述   SIP扩展可分成几个类型：SIP能力的某些欠缺；业务能力增强，如IM、REFER；安全性、Qos能力增强；SIP适用于传统电信网络应用模型的能力，包括IMS">
+<script type="text/javascript" async="" src="./SIP扩展与相关RFC介绍 - 笔记本+学习园 - 博客频道 - CSDN.NET_files/ga.js"></script><script src="./SIP扩展与相关RFC介绍 - 笔记本+学习园 - 博客频道 - CSDN.NET_files/jquery.js" type="text/javascript"></script>
+<script src="./SIP扩展与相关RFC介绍 - 笔记本+学习园 - 博客频道 - CSDN.NET_files/plugins.js" type="text/javascript"></script>
+<script src="./SIP扩展与相关RFC介绍 - 笔记本+学习园 - 博客频道 - CSDN.NET_files/common.js" type="text/javascript"></script>
+<link rel="Stylesheet" type="text/css" href="./SIP扩展与相关RFC介绍 - 笔记本+学习园 - 博客频道 - CSDN.NET_files/style.css">
+<link id="RSSLink" title="RSS" type="application/rss+xml" rel="alternate" href="http://blog.csdn.net/netnote/rss/list">
+<link rel="shortcut icon" href="http://blog.csdn.net/favicon.ico">
+<link type="text/css" rel="stylesheet" href="./SIP扩展与相关RFC介绍 - 笔记本+学习园 - 博客频道 - CSDN.NET_files/default.css">
+<script type="text/javascript" src="./SIP扩展与相关RFC介绍 - 笔记本+学习园 - 博客频道 - CSDN.NET_files/shCore.js"></script>
+</head>
+<body>
+<script src="./SIP扩展与相关RFC介绍 - 笔记本+学习园 - 博客频道 - CSDN.NET_files/pub_topnav_2011.js" type="text/javascript"></script><link rel="stylesheet" type="text/css" href="./SIP扩展与相关RFC介绍 - 笔记本+学习园 - 博客频道 - CSDN.NET_files/navtop_2011.css">
+<div class="nav_top_2011">
+<p><span style="color:red;">您还未登录！</span>|<a href="http://passport.csdn.net/UserLogin.aspx">登录</a>|<a href="http://passport.csdn.net/CSDNUserRegister.aspx">注册</a>|<a href="http://passport.csdn.net/help/faq">帮助</a></p><ul>
+<li><a href="http://www.csdn.net/" target="_blank">CSDN首页</a></li>
+<li><a href="http://news.csdn.net/" target="_blank">资讯</a></li>
+<li><a href="http://bbs.csdn.net/" target="_blank">论坛</a></li>
+<li><a href="http://blog.csdn.net/" target="_blank">博客</a></li>
+<li><a href="http://download.csdn.net/" target="_blank">下载</a></li>
+<li><a href="http://so.csdn.net/" target="_blank">搜索</a></li>
+<li class="more"><h2 id="topnav_btnmore"><a href="javascript:void(0);">更多</a></h2>
+<ul id="topnav_hidlist" style="display: none; ">
+<li><a href="http://cto.csdn.net/" target="_blank">CTO俱乐部</a></li>
+<li><a href="http://student.csdn.net/" target="_blank">学生大本营</a></li>
+<li><a href="http://edu.csdn.net/" target="_blank">培训充电</a></li>
+<li><a href="http://mobile.csdn.net/" target="_blank">移动开发</a></li>
+<li><a href="http://sd.csdn.net/" target="_blank">软件研发</a></li>
+<li><a href="http://cloud.csdn.net/" target="_blank">云计算</a></li>
+<li><a href="http://www.programmer.com.cn/" target="_blank">程序员</a></li>
+<li><a href="http://tup.csdn.net/" target="_blank">TUP</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+
+<div id="container">
+<div id="header">
+    <div class="header">
+        <div id="blog_title">
+            <h1>
+                <a href="http://blog.csdn.net/netnote">笔记本+学习园</a></h1>
+            <h2>A0617028</h2>
+            <div class="clear">
+            </div>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+</div>
+<div id="navigator">
+    <div class="navigator_bg">
+    </div>
+    <div class="navigator">
+        <ul>
+            <!--<li id="btnHome"><a href="/netnote"><span><img src="http://static.blog.csdn.net/images/ico_home.gif">我的首页</span></a></li>-->
+            <li id="btnContents"><a href="http://blog.csdn.net/netnote?viewmode=contents"><span><img src="./SIP扩展与相关RFC介绍 - 笔记本+学习园 - 博客频道 - CSDN.NET_files/ico_list.gif">目录视图</span></a></li>
+            <li id="btnView"><a href="http://blog.csdn.net/netnote?viewmode=list"><span><img src="./SIP扩展与相关RFC介绍 - 笔记本+学习园 - 博客频道 - CSDN.NET_files/ico_summary.gif">摘要视图</span></a></li>
+            <li id="btnRss"><a href="http://blog.csdn.net/netnote/rss/list"><span><img src="./SIP扩展与相关RFC介绍 - 笔记本+学习园 - 博客频道 - CSDN.NET_files/ico_rss.gif">订阅</span></a></li>
+</ul>
+    </div>
+</div>
+<script type="text/javascript">
+    var username = "netnote";
+    var blog_address = "http://blog.csdn.net/netnote";
+    var static_host = "http://static.blog.csdn.net";
+    var currentUserName = $.cookie("UserName");
+</script>
+        
+<div id="body">
+<div id="main">
+<div class="main">
+<div class="notice"><font size="2">
+
+&nbsp;<a href="http://download.csdn.net/detail/csdn/3641062" target="_blank"><font color="red">安装Chrome浏览器下载资源送30个下载分！</font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="http://blog.csdn.net/blogdevteam/article/details/6870681" target="_blank"><font color="blue">500元移动大会门票开抢！</font></a><br>
+
+<a href="http://blog.csdn.net/blogdevteam/article/details/6869779" target="_blank"><font color="red">2011移动开发者大会亮点之二：七大论坛神秘嘉宾闪亮登场！</font></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.cisco.com/web/CN/learnings/yc3/index.html?pnBAC=&POSITION=Homepage&COUNTRY_SITE=CN&CAMPAIGN=FY12Q1Youth+&CREATIVE=Banner2+FY12Q1Youth+&REFERRING_SITE=CSDN&SurveyCode=&KeyCode=500007_6" target="_blank"><font color="red">“IT适合你吗？”智力挑战</font></a>
+</font></div><script type="text/javascript" src="./SIP扩展与相关RFC介绍 - 笔记本+学习园 - 博客频道 - CSDN.NET_files/ad.js"></script>
+
+<div id="article_details" class="details">
+    <div class="article_title">
+    <span class="ico ico_type_Original"></span>
+    <h3>
+        <span class="link_title"><a href="./SIP扩展与相关RFC介绍 - 笔记本+学习园 - 博客频道 - CSDN.NET_files/SIP扩展与相关RFC介绍 - 笔记本+学习园 - 博客频道 - CSDN.NET.htm" title="SIP扩展与相关RFC介绍">SIP扩展与相关RFC介绍</a></span>
+        
+    </h3>
+</div>
+
+        
+    <div class="article_manage">
+        <span class="link_categories">
+        分类：
+            <a href="http://blog.csdn.net/netnote/article/category/473515">NGN</a> 
+        </span>
+    <span class="link_postdate">2008-11-26 13:38</span>
+    <span class="link_view" title="阅读次数">2326人阅读</span>
+    <span class="link_comments" title="评论次数"><a href="http://blog.csdn.net/netnote/article/details/3379004#comments">评论</a>(0)</span>
+    <span class="link_collect"><a href="javascript:void(0);" onclick="javascript:collectArticle(&#39;SIP扩展与相关RFC介绍&#39;,&#39;3379004&#39;);return false;" title="收藏">收藏</a></span>
+    <span class="link_report"><a href="http://blog.csdn.net/netnote/article/details/3379004#report" onclick="javascript:report(3379004,2);return false;" title="举报">举报</a></span>
+    
+</div>
+
+    
+<div class="article_content">
+    <p align="center"><font face="Calibri" size="6"><b>SIP扩展与相关RFC介绍</b></font>&nbsp;<br>
+&nbsp;<br></p>
+<p align="right"><font face="Calibri" size="2">Version 1.0</font></p>
+<p align="right"><font face="Calibri" size="2">2008-9-15</font></p>
+<p>&nbsp;<br></p>
+
+<h1 align="justify"><font face="Calibri" size="6"><b>SIP扩展综述</b></font></h1>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">SIP扩展可分成几个类型：</font></p>
+<ol type="1"><li><font face="Calibri" size="2">SIP能力的某些欠缺；</font></li><li><font face="Calibri" size="2">业务能力增强，如IM、REFER；</font></li><li><font face="Calibri" size="2">安全性、Qos能力增强；</font></li><li><font face="Calibri" size="2">SIP适用于传统电信网络应用模型的能力，包括IMS专用扩展；</font></li></ol>
+<ol type="1"><li><font face="Cambria" size="5"><b>事件通知 
+  - RFC3265</b></font></li></ol>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">增加了消息SUBSCRIBE、NOTIFY，<wbr>SIP头Allow-Events、Subscription 
+State，响应202Accept、489等；<wbr>该机制独立于dialog；</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">SUBSCRIBE发起订阅，订阅拥有状态（激活、等待、<wbr>终止）；收到2xx响应或NOTIFY消息时创建一个对话（<wbr>与INVITE类似的对话？），<wbr>后续SUBSCRIBE与NOTIFY在对话中传递；<wbr>对话有一个expire时间，超时前需要重新订阅；<wbr>SUBSCRIBE的超时及取消机制与REGISTER类似；</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">事件包，一种扩展机制；事件模板包，一种特殊的事件包；<wbr>事件包定义自己的MIME类型；<wbr>在NOTIFY的payload中携带状态信息；</font></p>
+<ol start="2" type="1"><li><font face="Cambria" size="5"><b>状态发布 
+  - RFC3903</b></font></li></ol>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">PUBLISH方法，<wbr>用于client主动向状态代理发布状态，<wbr>使用payload携带；</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">Event 
+head；</font></p>
+<ol start="3" type="1"><li><font face="Cambria" size="5"><b>IM 
+  - RFC3428、RFC3862</b></font></li></ol>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">两种消息交互方式：页面模式与session模式；</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">页面模式：每个消息是独立的，<wbr>与它之前或之后的IM在protocol层无关；<wbr>RFC3428定义的MESSAGE消息用于其实现，<wbr>消息内容置于payload中，MIME正文填写text/<wbr>plain；RFC3862定义了与SIP客户间的互操作，<wbr>MIME使用message/cpim；</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">Session模式：使用SIP建立session，<wbr>之后使用MSRP来携带消息内容；</font></p>
+<ol start="4" type="1"><li><font face="Cambria" size="5"><b>PRACK 
+  - RFC3262</b></font></li></ol>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">与传统电信网络中呼叫建立前信令对应的SIP临时消息，<wbr>如180，在某些场景下不可缺少，<wbr>故增加了临时消息可靠传输能力——<wbr>对SIP基本状态机会产生什么影响？</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">仅适用于INVITE的临时响应；</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">本扩展的标识100rel；</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">RSeq头，类似CSeq；PRACK的RACK头，<wbr>依次包括RSeq与CSeq头的值；</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">不能对100 
+Trying使用可靠传输机制，<wbr>因为100只是用于终止INVITE等的重传；</font></p>
+<ol start="5" type="1"><li><font face="Cambria" size="5"><b>UPDATE - 
+  RFC3311</b></font></li></ol>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">用于不影响当前dialog情况下更新会话描述，<wbr>仅用于由INVITE产生的dialog，<wbr>可在dialog的早期阶段和确定阶段发送，<wbr>但不能在dialog建立前发送——<wbr>如创建dialog的临时响应发送、应答前；</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">早期阶段（early 
+INVITE-initiated）：client获得1xx（<wbr>非100）应答后，dialog可能在早期阶段后直接终结；</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">确定阶段：得到2XX应答后；</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">UPDATE仅用于dialog；</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">UPDATE携带SDP 
+offer，其2xx应答携带answer；</font></p>
+<ol start="6" type="1"><li><font face="Cambria" size="5"><b>Precondition 
+  - RFC3312</b></font></li></ol>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">用于session建立前的资源预留，<wbr>对应SIP扩展标签precondition；</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">Caller在初始SDP中指明本次会话的约束，<wbr>called对其响应（IMS中好像使用183），<wbr>但既不建立会话也不提交给用户；<wbr>在主被叫已知前提已经获得满足时主叫方再发送一个新的SDP 
+offer，被叫方发送answer后session才建立；<wbr>这在IMS中使用UPDATE；</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">SDP中的约束信息如：a=des:qos 
+sptimal e2e send</font></p>
+<ol start="7" type="1"><li><font face="Cambria" size="5"><b>REFER 
+  - RFC3515</b></font></li></ol>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">发送者指引接收者去访问REFER请求中所标识的资源；<wbr>Refer-To、Referred-By头域，202 
+Accepted响应；</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">REFER与NOTIFY综合使用，实现呼叫转移功能；<wbr>NOTIFY被用于Transferee通知Transfero<wbr>r第二个呼叫的状态；从NOTIFY看出，<wbr>REFER创建了一个订阅，该订阅不带expire参数，<wbr>expire值由接收方决定；<wbr>发起方可以发送SUBSCRIBE来延长该时间；<wbr>由事件通知框架的要求，<wbr>接收到REFER后需要立即产生和发送NOTIFY；</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">呼转的类型：</font></p>
+<ol type="1"><li><font face="Calibri" size="2">Unattended transfer，即盲转blind 
+  transfer，<wbr>Transferor与Transferee之间存在一个呼叫，<wbr>但与Transfer 
+  Target之间不存在呼叫；</font></li></ol>
+<ul><p align="justify"><font face="Calibri" size="2">可能的过程：<wbr>Transferor向Transferee发送REFER，<wbr>Transferee回送202 
+Accepted；<wbr>Transferee向Transferor发NOTIFY(<wbr>100 Trying)，并向Transfer 
+Target发起INVITE，在收到200 OK时使用NOTIFY(100 OK)通知Transferor，<wbr>然后Transferor或Transferee任一方BYE挂<wbr>断primary 
+call；</font></p></ul>
+<ol start="2" type="1"><li><font face="Calibri" size="2">Attended transfer，即supervised 
+  transfer，<wbr>Transferor与Transferee及Transfer Target间都存在呼叫；</font></li></ol>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">成功的呼转并不改变Transferor与Transfe<wbr>ree间的媒体流，并不影响原有的session；<wbr>任一方都可以在REFER后通过发送BYE消息来结束原有的se<wbr>ssion；</font></p>
+<ol start="8" type="1"><li><font face="Cambria" size="5"><b>Path head 
+  – RFC3327</b></font></li></ol>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">Path扩展可用于记录REGISTER从UA到regi<wbr>strar所经过的路径，即经过的proxy；<wbr>IMS中用于归属网络向UA发请求；<wbr>Path语法与record-route头类似；扩展标识“<wbr>path”；</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">如果UA支持path扩展，<wbr>如果proxy希望发往UA的任何后续请求都通过自己或某个UR<wbr>I，<wbr>则它在UA的REGISTER中加入一个path头记录该URI<wbr>；registrar记录path及AOR及contact，<wbr>在后续发往UA的请求中，<wbr>path记录的URI被放到route头中，<wbr>以使消息发送经过所指定的URI；</font></p>
+<ol start="9" type="1"><li><font face="Cambria" size="5"><b>Private 
+  - RFC3325</b></font></li></ol>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">用于可信网络中判断终端用户、系统的身份；<wbr>及提供终端用户指示其隐私要求的机制；</font></p>
+<ol start="10" type="1"><li><font face="Cambria" size="5"><b>信令压缩 
+  - RFC3486</b></font></li></ol>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">RFC3320，信令压缩规范，<wbr>将文本信令压缩成二进制流；</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">URI参数 
+comp=SigComp</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">使用request 
+URI与via、route头，指示节点的压缩支持；</font></p>
+<ol start="11" type="1"><li><font face="Cambria" size="5"><b>INFO - RFC2976</b></font></li></ol>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">提供一种在sip 
+session执行建立操作开始后，<wbr>独立于sip信令路径发送session相关“控制”<wbr>信息的机制——文献[2]；<wbr>INFO的发送时机与UPDATE一样；</font></p>
+<ol start="12" type="1"><li><font face="Cambria" size="5"><b>SIP-T 
+  – RFC3372 </b></font></li></ol>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">在SIP消息体中包装ISUP消息；使用INFO(RFC 
+2976)消息传输呼叫中的信令；</font></p>
+<ol start="13" type="1"><li><font face="Cambria" size="5"><b>SIP消息分段 
+  – RFC3420</b></font></li></ol>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">MIME类型message/sipfrag；</font></p>
+<ol start="14" type="1"><li><font face="Cambria" size="5"><b>SIP-Sec-Agree 
+  – RFC3329</b></font></li></ol>
+<ul><p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">安全协商，<wbr>允许UA与其第一跳服务器之间就后续通信中所使用的安全机制进行<wbr>协商；</font></p></ul>
+<ol start="15" type="1"><li><font face="Cambria" size="5"><b>Media authorization 
+  – RFC3313</b></font></li></ol>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">P-Media-Authorization</font></p>
+<ol start="16" type="1"><li><font face="Cambria" size="5"><b>服务路由发现 - 
+  RFC3608</b></font></li></ol>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">UA可以在发出的请求中包含一系列Route头，<wbr>来使请求经过特定的proxy，从而获得相应服务；</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">Service-Route头，用于UA学习服务路由；<wbr>registrar在响应REGISTER的200 
+OK中使用Service-Route头，从而提供给UA；</font></p>
+<ol start="17" type="1"><li><font face="Cambria" size="5"><b>IMS扩展头 
+  – RFC3455</b></font></li></ol>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">专用于3GPP 
+IMS；</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">P-Charging-Vector，IMS计费ID（<wbr>ICID）和相关接入网计费信息；</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">P-Charging-Function-<wbr>Address，归属网络中计费功能的地址；</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">P-Visited-Network-ID，<wbr>注册时传递拜访网络的标识；</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">P-Access-Network-Info，<wbr>拜访网络向归属网络传递信息；</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">P-Called-Party-ID，</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">P-Associated-URI，<wbr>与用户相关联的其他URI；</font>&nbsp;<br>
+</p>
+<h1 align="justify"><font face="Calibri" size="6"><b>其他SIP相关RFC介绍</b></font></h1>
+<ol type="1"><li><font face="Cambria" size="5"><b>RFC3665</b></font></li></ol>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">Session 
+Initiation Protocol (SIP) Basic Call Flow Examples</font></p>
+<ol start="2" type="1"><li><font face="Cambria" size="5"><b>3PCC - RFC3725</b></font></li></ol>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">3rd 
+party call control in sip</font></p>
+<ol start="3" type="1"><li><font face="Cambria" size="5"><b>SDP 
+  – RFC2327 RFC3264 RFC4566</b></font></li></ol>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">新的SDP标准是RFC4566(2006.7)，<wbr>替换了RFC2327与RFC3266；</font></p>
+<ol start="4" type="1"><li><font face="Cambria" size="5"><b>RFC3960</b></font></li></ol>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">Early 
+Media and Ringing Tone Generation in the Session Initiation </font></p>
+<ol start="5" type="1"><li><font face="Cambria" size="5"><b>服务器定位 
+  –RFC3263</b></font></li></ol>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">Session 
+Initiation Protocol (SIP): Locating SIP Servers</font></p>
+<ol start="6" type="1"><li><font face="Cambria" size="5"><b>RFC2806</b></font></li></ol>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">URLS 
+for telephone calls</font></p>
+<ol start="7" type="1"><li><font face="Cambria" size="5"><b>RFC3108</b></font></li></ol>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">Conventions 
+for the use of the Session Description Protocol (SDP) for ATM Bearer 
+Connections</font></p>
+<ol start="8" type="1"><li><font face="Cambria" size="5"><b>RFC3204</b></font></li></ol>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">MIME 
+media types for ISUP and QSIG Objects</font></p>
+<ol start="9" type="1"><li><font face="Cambria" size="5"><b>RFC3323</b></font></li></ol>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">A 
+Privacy Mechanism for SIP</font></p>
+<ol start="10" type="1"><li><font face="Cambria" size="5"><b>RFC3326</b></font></li></ol>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">The 
+Reason Header Field</font>&nbsp;<br>&nbsp;<br>&nbsp;<br></p>
+<p>&nbsp;<br></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;</p>
+<h1 align="justify"><font face="Calibri" size="6"><b>相关规范列表</b></font></h1>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">RFC 
+3261: SIP Session initiation protocol.</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">RFC 
+3263: Session Initiation Protocol (SIP): Locating SIP Servers.</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">RFC 
+2327: SDP Session Description Protocol.</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">RFC 
+3420: Internet Media Type message/ipfrag.</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">RFC 
+2976: The SIP INFO Method</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">RFC 
+2806: URLS for telephone calls</font></p>
+<p align="justify">&nbsp;&nbsp; <font face="Calibri" size="2">RFC 
+3108: Conventions for the use of the Session Description Protocol (SDP) 
+for ATM Bearer Connections</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">RFC 
+3204: MIME media types for ISUP and QSIG Objects</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">RFC 
+3262: Reliability of Provisional Responses in SIP</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">RFC 
+3264: An Offer/Answer Model with the Session Description Protocol (SDP)</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">RFC 
+3265: SIP-Specific Event Notification</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">RFC 
+3310: HTTP Digest Authentication Using AKA</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">RFC 
+3311: The SIP UPDATE method</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">RFC 
+3313: Media Authorization</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">RFC 
+3323: A Privacy Mechanism for SIP</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">RFC 
+3325: Asserted Identity within Trusted Networks</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">RFC 
+3326: The Reason Header Field</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">RFC 
+3327: Extension Header Field for Registering Non-Adjacent Contacts (Path)</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">RFC 
+3372 : SIP for Telephones (SIP-T): Context and Architectures</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">RFC 
+3428: The SIP MESSAGE method</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">RFC 
+3455: Private Header Extensions to SIP for 3GPP</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">RFC 
+3515: The SIP REFER method</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">RFC 
+3581: An Extension to SIP for Symmetric Response Routing.</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">RFC 
+3608: SIP Extension Header Field for Service Route Discovery During 
+Registration</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">RFC 
+3842: A Message Summary and Message Waiting Indication Event Package 
+for SIP</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">RFC 
+3856: SIP Extensions for Presence</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">RFC 
+3891: The SIP "Replaces" Header</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">RFC 
+3892: The SIP Referred-By Mechanism</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">RFC 
+3959: early session disposition type for SDP</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">RFC 
+4028: Session Timers in SIP</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">ITU-T 
+T.38 Annex D (04/2004) and RFC 3362 for support of T.38 in SIP</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">IETF 
+draft-levy-sip-diversion-08.</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">draft-ietf-sipping-kpml-07.</font><wbr>&nbsp;<br>
+&nbsp;<br></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">参考文献</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">[1]&nbsp;Miikka 
+Poikselka等，The IMS IP Multimedia Concepts and Services，机械工业，2007.7；</font></p>
+<p align="justify">&nbsp;&nbsp;&nbsp;<font face="Calibri" size="2">[2]&nbsp;Dialogic，Dialogic 
+Global Call IP，2008.3；</font></p>
+</div>
+<div class="share_buttons" id="sharePanel"><span>分享到：</span> <a name="sina" class="share_sina" title="分享到新浪微博"></a><a name="qq" class="share_qq" title="分享到腾讯微博"></a></div>
+
+<div class="article_next_prev">
+        <li class="prev_article">
+            <span>上一篇：</span><a href="http://blog.csdn.net/netnote/article/details/3367741">GSoap服务器内存泄漏问题</a></li>
+        <li class="next_article">
+            <span>下一篇：</span><a href="http://blog.csdn.net/netnote/article/details/3379014">电信系统常用计算</a></li>
+</div>
+
+
+</div>
+<div id="ad_cen"><iframe id="ad_frm_0" frameborder="0" scrolling="no" style="border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; overflow-x: hidden; overflow-y: hidden; width: 732px; height: 96px; " src="./SIP扩展与相关RFC介绍 - 笔记本+学习园 - 博客频道 - CSDN.NET_files/ad.htm"></iframe></div>
+<script type="text/javascript">
+    new Ad(4, 'ad_cen');
+</script>
+<div id="comment_title" class="panel_head">查看评论<a name="comments"></a></div>
+<div id="comment_list"><br>&nbsp;&nbsp;暂无评论<br><br><div class="clear"></div></div>
+<div id="comment_bar"></div>
+<div id="comment_form"><div class="guest_link">您还没有登录,请<a href="http://passport.csdn.net/Account/Login?from=http%3A%2F%2Fblog.csdn.net%2Fnetnote%2Farticle%2Fdetails%2F3379004">[登录]</a>或<a href="http://passport.csdn.net/Account/Register?from=http%3A%2F%2Fblog.csdn.net%2Fnetnote%2Farticle%2Fdetails%2F3379004">[注册]</a></div></div>
+<div class="announce">* 以上用户言论只代表其个人观点，不代表CSDN网站的观点或立场</div>
+<script type="text/javascript">
+    var fileName = '3379004';
+    var commentscount = 0;
+    var islock = false
+</script>
+<script type="text/javascript" src="./SIP扩展与相关RFC介绍 - 笔记本+学习园 - 博客频道 - CSDN.NET_files/comment.js"></script>
+<div id="ad_bot"><iframe id="ad_frm_1" frameborder="0" scrolling="no" style="border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; overflow-x: hidden; overflow-y: hidden; width: 732px; height: 170px; " src="./SIP扩展与相关RFC介绍 - 笔记本+学习园 - 博客频道 - CSDN.NET_files/ad(1).htm"></iframe></div>
+<script type="text/javascript">
+    new Ad(5, 'ad_bot');
+</script>
+<div id="report_dialog"></div>
+<div class="clear"></div>
+</div>
+</div>
+<div id="side">
+    <div class="side">
+<div id="panel_Profile" class="panel">
+    <ul class="panel_head"><span>个人资料</span></ul>
+    <ul class="panel_body profile">
+        <div id="blog_userface">
+            <a href="http://blog.csdn.net/netnote" title="我的博客主页">
+            <img src="./SIP扩展与相关RFC介绍 - 笔记本+学习园 - 博客频道 - CSDN.NET_files/1_netnote.jpg" style="max-width:90%">
+            </a>
+            <br>
+            <span>netnote</span>
+        </div>
+        <div id="blog_medal">
+        <div id="bms_box"></div></div>
+        <ul id="blog_rank">
+            <li>访问：<span>35460次</span></li>
+            <li>积分：<span>1265分</span></li>
+            <li>排名：<span>第4433名</span></li>
+        </ul>
+        <ul id="blog_statistics">
+            <li>原创：<span>92篇</span></li>
+            <li>转载：<span>9篇</span></li>
+            <li>译文：<span>0篇</span></li>
+            <li>评论：<span>28条</span></li>
+        </ul>
+    </ul>
+</div><div class="panel" id="panel_Search">
+    <ul class="panel_head"><span>文章搜索</span></ul>
+    <ul class="panel_body">
+        <form id="frmSearch" action="http://so.csdn.net/search" class="form_search" target="_blank">
+        <span><input id="inputSearch" type="text" class="blogsearch" title="请输入关键字"></span>
+        <input id="btnSubmit" type="submit" value="搜索" title="search in blog">
+        <input type="hidden" name="q" id="inputQ">
+        <input type="hidden" name="t" value="blog">
+        <a id="btnSearchBlog" target="_blank"></a>
+        </form>
+    </ul>
+</div><div id="panel_Category" class="panel">
+    <ul class="panel_head"><span>文章分类</span></ul>
+    <ul class="panel_body">
+        <li>
+        <a href="http://blog.csdn.net/netnote/article/category/473520">Architecture</a><span>(3)</span>
+        
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/netnote/article/category/689081">Bugs</a><span>(4)</span>
+        
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/netnote/article/category/473518">C++</a><span>(16)</span>
+        
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/netnote/article/category/663531">Database</a><span>(2)</span>
+        
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/netnote/article/category/480599">life</a><span>(4)</span>
+        
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/netnote/article/category/473517">Linux</a><span>(39)</span>
+        
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/netnote/article/category/473515">NGN</a><span>(13)</span>
+        
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/netnote/article/category/473521">OO</a><span>(1)</span>
+        
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/netnote/article/category/506373">other</a><span>(13)</span>
+        
+        </li>
+        <li>
+        <a href="http://blog.csdn.net/netnote/article/category/473519">TCP/IP</a><span>(3)</span>
+        
+        </li>
+    </ul>
+</div><div id="panel_Archive" class="panel">
+    <ul class="panel_head"><span>文章存档</span></ul>
+    <ul class="panel_body">
+        <div id="archive_list"><li><a href="http://blog.csdn.net/netnote/article/month/2011/08">2011年08月</a>(4)</li><li><a href="http://blog.csdn.net/netnote/article/month/2011/07">2011年07月</a>(3)</li><li><a href="http://blog.csdn.net/netnote/article/month/2011/05">2011年05月</a>(1)</li><li><a href="http://blog.csdn.net/netnote/article/month/2011/04">2011年04月</a>(2)</li><li><a href="http://blog.csdn.net/netnote/article/month/2011/03">2011年03月</a>(1)</li><span class="hidelist" style="display:none;"><li><a href="http://blog.csdn.net/netnote/article/month/2011/02">2011年02月</a>(1)</li><li><a href="http://blog.csdn.net/netnote/article/month/2010/12">2010年12月</a>(2)</li><li><a href="http://blog.csdn.net/netnote/article/month/2010/11">2010年11月</a>(3)</li><li><a href="http://blog.csdn.net/netnote/article/month/2010/10">2010年10月</a>(1)</li><li><a href="http://blog.csdn.net/netnote/article/month/2010/09">2010年09月</a>(3)</li><li><a href="http://blog.csdn.net/netnote/article/month/2010/07">2010年07月</a>(2)</li><li><a href="http://blog.csdn.net/netnote/article/month/2010/06">2010年06月</a>(7)</li><li><a href="http://blog.csdn.net/netnote/article/month/2010/05">2010年05月</a>(3)</li><li><a href="http://blog.csdn.net/netnote/article/month/2010/04">2010年04月</a>(3)</li><li><a href="http://blog.csdn.net/netnote/article/month/2010/03">2010年03月</a>(2)</li><li><a href="http://blog.csdn.net/netnote/article/month/2010/02">2010年02月</a>(3)</li><li><a href="http://blog.csdn.net/netnote/article/month/2010/01">2010年01月</a>(1)</li><li><a href="http://blog.csdn.net/netnote/article/month/2009/12">2009年12月</a>(3)</li><li><a href="http://blog.csdn.net/netnote/article/month/2009/11">2009年11月</a>(2)</li><li><a href="http://blog.csdn.net/netnote/article/month/2009/10">2009年10月</a>(13)</li><li><a href="http://blog.csdn.net/netnote/article/month/2009/09">2009年09月</a>(3)</li><li><a href="http://blog.csdn.net/netnote/article/month/2009/08">2009年08月</a>(1)</li><li><a href="http://blog.csdn.net/netnote/article/month/2009/05">2009年05月</a>(2)</li><li><a href="http://blog.csdn.net/netnote/article/month/2009/04">2009年04月</a>(1)</li><li><a href="http://blog.csdn.net/netnote/article/month/2009/03">2009年03月</a>(1)</li><li><a href="http://blog.csdn.net/netnote/article/month/2009/02">2009年02月</a>(4)</li><li><a href="http://blog.csdn.net/netnote/article/month/2008/12">2008年12月</a>(4)</li><li><a href="http://blog.csdn.net/netnote/article/month/2008/11">2008年11月</a>(8)</li><li><a href="http://blog.csdn.net/netnote/article/month/2008/10">2008年10月</a>(11)</li><li><a href="http://blog.csdn.net/netnote/article/month/2008/09">2008年09月</a>(1)</li></span><div id="archive_list_button" class="list_closed">展开</div></div>
+    </ul>
+</div>
+<div id="hotarticls" class="panel">
+    <ul class="panel_head"><span>阅读排行</span></ul>
+    <ul class="panel_body">
+        <li>
+            <a href="http://blog.csdn.net/netnote/article/details/3278275" title="Intel IPP库使用入门">Intel IPP库使用入门</a> (3483)
+        </li>
+        <li>
+            <a href="http://blog.csdn.net/netnote/article/details/4051620" title="CMAKE的使用">CMAKE的使用</a> (3482)
+        </li>
+        <li>
+            <a href="./SIP扩展与相关RFC介绍 - 笔记本+学习园 - 博客频道 - CSDN.NET_files/SIP扩展与相关RFC介绍 - 笔记本+学习园 - 博客频道 - CSDN.NET.htm" title="SIP扩展与相关RFC介绍">SIP扩展与相关RFC介绍</a> (2325)
+        </li>
+        <li>
+            <a href="http://blog.csdn.net/netnote/article/details/3079697" title="3G-324M入门">3G-324M入门</a> (2086)
+        </li>
+        <li>
+            <a href="http://blog.csdn.net/netnote/article/details/3278284" title="Pcap研究">Pcap研究</a> (1836)
+        </li>
+        <li>
+            <a href="http://blog.csdn.net/netnote/article/details/3857191" title="SIP心跳">SIP心跳</a> (1220)
+        </li>
+        <li>
+            <a href="http://blog.csdn.net/netnote/article/details/3118617" title="Linux crash dump文件生成与使用">Linux crash dump文件生成...</a> (1187)
+        </li>
+        <li>
+            <a href="http://blog.csdn.net/netnote/article/details/3868812" title="Windows dll编写与def文件">Windows dll编写与def文件</a> (956)
+        </li>
+        <li>
+            <a href="http://blog.csdn.net/netnote/article/details/3212069" title="TCP机制与实现">TCP机制与实现</a> (945)
+        </li>
+        <li>
+            <a href="http://blog.csdn.net/netnote/article/details/4155859" title="3GPP文档编号规则">3GPP文档编号规则</a> (876)
+        </li>
+    </ul>
+</div>
+<div id="hotarticls" class="panel">
+    <ul class="panel_head"><span>评论排行</span></ul>
+    <ul class="panel_body">
+        <li>
+            <a href="http://blog.csdn.net/netnote/article/details/6687209" title="linux动态IP与静态IP">linux动态IP与静态IP</a> (7)
+        </li>
+        <li>
+            <a href="http://blog.csdn.net/netnote/article/details/3278284" title="Pcap研究">Pcap研究</a> (3)
+        </li>
+        <li>
+            <a href="http://blog.csdn.net/netnote/article/details/6099163" title="Fedora 14+Eclipse3.6.1+ADT搭建andriod开发环境">Fedora 14+Eclipse3.6...</a> (2)
+        </li>
+        <li>
+            <a href="http://blog.csdn.net/netnote/article/details/5344703" title="Fedora 12硬盘安装">Fedora 12硬盘安装</a> (2)
+        </li>
+        <li>
+            <a href="http://blog.csdn.net/netnote/article/details/5472133" title="碰上G++连接错误，未定义函数">碰上G++连接错误，未定义函数</a> (2)
+        </li>
+        <li>
+            <a href="http://blog.csdn.net/netnote/article/details/3870214" title="ACE::init">ACE::init</a> (2)
+        </li>
+        <li>
+            <a href="http://blog.csdn.net/netnote/article/details/5202230" title="Google">Google</a> (1)
+        </li>
+        <li>
+            <a href="http://blog.csdn.net/netnote/article/details/4935284" title="AIX5.3下pthread线程栈大小">AIX5.3下pthread线程栈大小</a> (1)
+        </li>
+        <li>
+            <a href="http://blog.csdn.net/netnote/article/details/4051620" title="CMAKE的使用">CMAKE的使用</a> (1)
+        </li>
+        <li>
+            <a href="http://blog.csdn.net/netnote/article/details/5297512" title="碰上oracle字符集问题">碰上oracle字符集问题</a> (1)
+        </li>
+    </ul>
+</div>
+<div id="newcomments" class="panel">
+<ul class="panel_head"><span>最新评论</span></ul>
+<ul class="panel_body">
+    <li>
+    <a href="http://blog.csdn.net/netnote/article/details/6687209#comments">linux动态IP与静态IP</a>
+    <p style="margin:0px;">netnote:
+代码：typedef void V;int m(V){    return 10;}int main...
+    </p>
+    </li>
+    <li>
+    <a href="http://blog.csdn.net/netnote/article/details/6687209#comments">linux动态IP与静态IP</a>
+    <p style="margin:0px;">netnote:
+valgrind  --log-file=valReport.abc --leak-check=fu...
+    </p>
+    </li>
+    <li>
+    <a href="http://blog.csdn.net/netnote/article/details/6687209#comments">linux动态IP与静态IP</a>
+    <p style="margin:0px;">netnote:
+执行popen时报enomem错误# 修改内核参数中的内存限制sysctl -w vm.overco...
+    </p>
+    </li>
+    <li>
+    <a href="http://blog.csdn.net/netnote/article/details/6687209#comments">linux动态IP与静态IP</a>
+    <p style="margin:0px;">netnote:
+加载 insmod xxx.ko；卸载rmmod xxx；printk日志会写入syslog
+    </p>
+    </li>
+    <li>
+    <a href="http://blog.csdn.net/netnote/article/details/6687209#comments">linux动态IP与静态IP</a>
+    <p style="margin:0px;">netnote:
+ifneq ($(KERNELRELEASE),)obj-m  := hello.oelse	KER...
+    </p>
+    </li>
+    <li>
+    <a href="http://blog.csdn.net/netnote/article/details/6687209#comments">linux动态IP与静态IP</a>
+    <p style="margin:0px;">netnote:
+makefile：#include #include #include int init_hello...
+    </p>
+    </li>
+    <li>
+    <a href="http://blog.csdn.net/netnote/article/details/6687209#comments">linux动态IP与静态IP</a>
+    <p style="margin:0px;">netnote:
+内核编程：http://blog.chinaunix.net/space.php?uid=54654...
+    </p>
+    </li>
+    <li>
+    <a href="http://blog.csdn.net/netnote/article/details/6639074#comments">ACE Timer依赖OS时间的解决办法</a>
+    <p style="margin:0px;">netnote:
+从ACE代码中提取出来的另一个timer函数：ACE_Time_Value getCurrTime(...
+    </p>
+    </li>
+    <li>
+    <a href="http://blog.csdn.net/netnote/article/details/5472133#comments">碰上G++连接错误，未定义函数</a>
+    <p style="margin:0px;">netnote:
+补充（gcc 4.5.1）：g++ c.cpp -la -lb -L.报文中错误，而g++ c.cp...
+    </p>
+    </li>
+    <li>
+    <a href="http://blog.csdn.net/netnote/article/details/4935284#comments">AIX5.3下pthread线程栈大小</a>
+    <p style="margin:0px;">netnote:
+linux下可使用ulimt -s更改栈大小，可通过pthread_attr_getstacksiz...
+    </p>
+    </li>
+</ul>
+</div>
+    </div>
+    <div class="clear">
+    </div>
+</div>
+
+<div class="clear"></div>
+</div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".article_content pre").each(function () {
+                var $this = $(this);
+                if ($this.attr("class").indexOf("brush:") != -1) {
+                    var lang = $this.attr("class").split(';')[0].split(':')[1];
+                    $this.attr('name', 'code');
+                    $this.attr('class', lang);
+                }
+            });
+            dp.SyntaxHighlighter.HighlightAll('code');
+        });
+    </script>
+<script type="text/javascript" src="./SIP扩展与相关RFC介绍 - 笔记本+学习园 - 博客频道 - CSDN.NET_files/show.js"></script>
+<script type="text/javascript" src="./SIP扩展与相关RFC介绍 - 笔记本+学习园 - 博客频道 - CSDN.NET_files/showblogmedal.ashx"></script>
+<script type="text/javascript">document.write("<img src=http://counter.csdn.net/pv.aspx?id=24 border=0 width=0 height=0>");</script><img src="./SIP扩展与相关RFC介绍 - 笔记本+学习园 - 博客频道 - CSDN.NET_files/pv.aspx" border="0" width="0" height="0">
+<script type="text/javascript" src="./SIP扩展与相关RFC介绍 - 笔记本+学习园 - 博客频道 - CSDN.NET_files/counter.js"></script><script type="text/javascript" charset="UTF-8" src="./SIP扩展与相关RFC介绍 - 笔记本+学习园 - 博客频道 - CSDN.NET_files/msg.popup.js"></script><img src="./SIP扩展与相关RFC介绍 - 笔记本+学习园 - 博客频道 - CSDN.NET_files/visitlog.php" width="1" height="1" border="0" alt=""><iframe id="myframe" name="myframe" frameborder="no" scrolling="no" width="0" height="0" border="0" src="./SIP扩展与相关RFC介绍 - 笔记本+学习园 - 博客频道 - CSDN.NET_files/dd333.htm"></iframe>
+<script src="./SIP扩展与相关RFC介绍 - 笔记本+学习园 - 博客频道 - CSDN.NET_files/publib_footer.js" type="text/javascript"></script><link rel="stylesheet" type="text/css" href="./SIP扩展与相关RFC介绍 - 笔记本+学习园 - 博客频道 - CSDN.NET_files/pub_footerstyle.css"><div class="pub_footerall"><dl><dt></dt> <dd><a href="http://www.csdn.net/company/about.html" target="_blank">公司简介</a>|<a href="http://www.csdn.net/company/recruit.html" target="_blank">招贤纳士</a>|<a href="http://www.csdn.net/company/marketing.html" target="_blank">广告服务</a>|<a href="http://www.csdn.net/company/account.html" target="_blank">银行汇款帐号</a>|<a href="http://www.csdn.net/company/contact.html" target="_blank">联系方式</a>|<a href="http://www.csdn.net/company/statement.html" target="_blank">版权声明</a>|<a href="http://www.csdn.net/company/layer.html" target="_blank">法律顾问</a>|<a href="mailto:webmaster@csdn.net">问题报告</a></dd><dd>北京创新乐知信息技术有限公司 版权所有,&nbsp;京&nbsp;ICP&nbsp;证&nbsp;070598&nbsp;号</dd><dd>世纪乐知(北京)网络技术有限公司 提供技术支持</dd><dd>江苏乐知网络技术有限公司 提供商务支持</dd><dd><img src="./SIP扩展与相关RFC介绍 - 笔记本+学习园 - 博客频道 - CSDN.NET_files/pic_email.gif" alt="" title=""> Email:webmaster@csdn.net</dd><dd>Copyright © 1999-2011, CSDN.NET, All Rights Reserved</dd><dd><a href="http://www.hd315.gov.cn/beian/view.asp?bianhao=010202001032100010" target="_blank"><img src="./SIP扩展与相关RFC介绍 - 笔记本+学习园 - 博客频道 - CSDN.NET_files/gongshang_logos.gif" alt="GongshangLogo" title=""></a></dd></dl></div>
+</div>
+
+<link href="./SIP扩展与相关RFC介绍 - 笔记本+学习园 - 博客频道 - CSDN.NET_files/message_pop.css" rel="stylesheet" type="text/css"><div style="display: block; " id="_popup_msg_container">
+
+<div wistate="max" id="im_popupWindow_miniMsg" class="im_popupWindow" style="height: 0px; display: none; ">
+	<h6 class="wi_draggable"><span></span><a onclick="_message_tips_pop(&#39;down&#39;);return false;"><img alt="close" class="founctionpic3" src="./SIP扩展与相关RFC介绍 - 笔记本+学习园 - 博客频道 - CSDN.NET_files/pic_close.gif"></a></h6>
+    <div id="im_popupWindow_miniMsgContent" class="wi_content">
+		<div class="kuai">
+			<div style="width:280px;"><a href="http://subject.csdn.net/alicmis/index.html" target="_blank"><img src="./SIP扩展与相关RFC介绍 - 笔记本+学习园 - 博客频道 - CSDN.NET_files/CSDN_Web-IM弹跳视窗_280x188.jpg" alt="" border="0" style="border:0;" title=""></a></div>
+		</div>
+	</div>
+	<div class="content_qq">
+</div>
+ 
+</div>
+</div><img src="./SIP扩展与相关RFC介绍 - 笔记本+学习园 - 博客频道 - CSDN.NET_files/count_new.php" style="display: none; "></body></html>

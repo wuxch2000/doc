@@ -1,0 +1,944 @@
+CISCO配置命令大全 
+--------------------------------------------------------------------------------
+
+http://www.vlan9.com 作者: 2005-12-25 来源:Vlan9.com收集整理 浏览: 
+
+　　路由器的基本配置 
+　　1 ． 配 置 以 太 网（Ethernet） 端 口： 
+　　# conf t 
+　　从终端配置路由器。 
+　　# int e0 
+　　指定E0口。 
+　　# ip addr ABCD XXXX 
+　　ABCD为以太网地址,XXXX为子网掩码。 
+ 
+　　# ip addr ABCD XXXX secondary 
+　　E0口同时支持两个地址类型。如果第一个 
+　　为A类地址，则第二个为B或C类地址。 
+　　# no shutdown 
+　　激活E0口。 
+　　# exit 
+　　2．X.25的配置 
+　　# conf t 
+　　# int S0 
+　　指定S0口. 
+　　# ip addr ABCD XXXX 
+　　ABCD为以太网S0的IP地址,XXXX为子网掩码.。 
+　　# encap X25-ABC 
+　　封装X.25协议。ABC指定X.25为DTC或DCE操作，缺省为DTE。 
+　　# x25 addr ABCD 
+　　ABCD为S0的X.25端口地址,由邮电局提供。 
+　　# x25 map ip ABCD XXXX br 
+　　映射的X.25地址.ABCD为对方路由器(如:S0)的 
+　　IP地址,XXXX为对方路由器(如:S0)的X.25端口地址。 
+　　# x25 htc X 
+　　配置最高双向通道数.X的取值范围1-4095, 
+　　要根据邮电局实际提供的数字配置。 
+　　# x25 nvc X 
+　　配置虚电路数。X不可超过据邮电局实际 
+　　提供的数,否则,将影响数据的正常传输。 
+　　# exit 
+　　---- 3 ． 专 线 的 配 置： 
+　　# conf t 
+　　# int　S2 
+　　指定S2口。 
+　　# ip addr ABCD XXXX 
+　　ABCD为S2的IP地址,XXXX为子网掩码。 
+　　# exit 
+　　4．帧中继的配置 
+　　# conf t 
+　　# int s0 
+　　# ip addr ABCD XXXX 
+　　ABCD为S0的IP地址,XXXX为子网掩码。 
+　　# encap frante_relay 
+　　封装frante_relay协议。 
+　　# no nrzi_encoding 
+　　NRZI=NO 
+　　# frame_relay lmi_type q933a 
+　　LMI使用Q933A标准．LMI（Local management Interface）有3种：ANSI：T1.617；CCITTY：Q933A和CISCO特有的标准。 
+　　# fram-relay intf-typ ABC 
+　　ABC为帧中继设备类型，它们分别是DTE设备，DCE交换机或NNI（网络接点接口）支持。 
+　　# frame_relay interface_dlci 110 br 
+　　配置DLCI(数据链路连接标识符)。 
+　　# frame-relay map ip ABCD XXXX broadcast 
+　　建立帧中继映射。ABCD为对方ip地址，XXXX为本地DLCI号，broadcast允许广播向前转发或更新路由。 
+　　# no shutdown 
+　　激活本端口． 
+　　# exit 
+　　---- 5 ． 帧 中 继 子 接 口 的 配 置： 
+　　# conf　ｔ 
+　　# int s0.1 point-to-point 
+　　对应S0的子接口1，点对点方式。 
+　　# ip addr ABCD XXXX 
+　　ABCD为子口1的IP地址,XXXX为子网掩码。 
+　　# frame-relay intreface-dlci 100 br 
+　　6．配置拨号备份 
+　　(1)．配置备份主口 
+　　# conf t 
+　　# int s0 
+　　S0为主口． 
+　　# backup int asy 1 
+　　A1口为备份口． 
+　　# backup delay 0 1 
+　　延时1秒． 
+　　(2)．配置虚拟接口 
+　　# conf t 
+　　# ip addr ABCD XXXX 
+　　ABCD为虚拟接口IP地址,XXXX为子网掩码。 
+　　# encap ppp 
+　　封装ppp协议． 
+　　# dialer in-band 
+　　激活随叫随拨功能． 
+　　# dialer idle-timeout 7200 
+　　# dialer map ip ABCD modem-script call broadcast 6225481 br 映射对应的拨号口． 
+　　ABCD为对方拨号口的ip地址，6225481为对应的电话号码。 
+　　# dialer_group 1 定义拨号组成员． 
+　　(3)．配置防火墙 
+　　# dialer_list 1 pro ip permit 
+　　允许ip协议通过。 
+　　(4)．配置连接口令 
+　　# user name ABCD pass XXXX 
+　　ABCD为对方主机名,XXXX为连接口令． 
+　　(5)．配置拨号字符串 
+　　# conf t 
+　　# chat-script call ABORT BUSY ABORT ERROR"" atdt 6335481 TIMEOUT 45 "CONNECT" 
+　　6335481为对方电话号码。 
+　　（6）．配置拨号连接密码 
+　　# conf t 
+　　# username ROU1 pass XXXX 
+　　ROU1为对方路由器名，XXXX为连接密码。 
+　　(7)．配置线路 
+　　# conf　ｔ 
+　　# line aux 0 
+　　# modem inout 
+　　MODEM双向传输。 
+　　# modem autoconfigure discovery 
+　　# transport input all 
+　　# rxspeed 51200 
+　　MODEM的收发速率为51200 。 
+　　# exit 
+　　7．配置同步/异步口 （适用于2522） 
+　　# conf t 
+　　# int s2 
+　　# ph asyn 
+　　配置S2为异步口． 
+　　# ph sync、 
+　　配置S2为同步口． 
+　　8．动态路由的配置 
+　　# conf t 
+　　# router eigrp 20 
+　　使用EIGRP路由协议。常用的路由协议有RIP，IGRP，IS-IS等。 
+　　# passive-interface serial0 
+　　若S0与X.25相连，则输入本条指令。 
+　　# passive-interface serial1 
+　　若S1与X.25相连，则输入本条指令。 
+　　# network ABCD 
+　　ABCD为本机的以太网地址。 
+　　# network XXXX 
+　　XXXX为S0的ip地址。 
+　　# no auto-summary 
+　　# exit 
+　　9．静态路由的配置 
+　　# ip router ABCD XXXX YYYY 90 
+　　ABCD为对方路由器的以太网地址；XXXX为子网掩码.；YYYY为对方对应的广域网端口地址。 
+　　# dialer-list 1 protocol ip permail 
+　　10．备份配置文件到硬盘 
+　　# copy run tftp 
+　　在硬盘上建立一个空文件且有读写权限,才能备份成功． 
+　　11．恢复备份配置文件到路由器 
+　　# copy tftp run 
+　　12．在路由器上建一个备份 
+　　# copy run start 
+　　路由器的配置参数较多，可根据实际需要增减， 
+　　限于篇幅，本文仅给出了一般的常用配置。 
+　　---- ． 调 试 
+　　　---- 1. 首 先 将 路 由 器 的Ethernet 口 和 所 有 要 使 用 的 串 口 都 激 活， 方 法 是 进 入 该 口， 执 行No Shutdown。 
+　　　---- 2. 将 和 路 由 器 相 连 的 主 机 加 上 缺 省 路 由（ 中 心 路 由 器 的Ethernet 地 址）， 方 法 是 在UNIX 系 统 的 超 级 用 户 下 执 行：router add defaule XXXX 1（XXXX 为 路 由 器 的E0 口 地 址）。 每 台 主 机 都 要 加 缺 省 路 由， 否 则， 将 不 能 正 常 通 讯。 
+　　　---- 3. Ping 本 机 的 路 由 器Ethernet 网 口（ 若 不 通：（1）Ethetnet 网 口 没 有 激 活（2） 不 在 一 个 网 上）、 广 域 网 口（ 若 不 通： 没 有 加 缺 省 路 由）， 对 方 广 域 网 口（ 若 不 通： 路 由 器 配 置 错 误）、 路 由 器Ethernet 网 口（ 若 不 通： 路 由 器 配 置 错 误）、 主 机Ethernet 网 口（ 若 不 通： 对 方 主 机 没 有 加 缺 省 路 由）。 
+　　　---- 4. 在 专 线 卡(X.25) 主 机 上 加 网 关（ 静 态 路 由）， 方 法 是 在UNIX 系 统 的 超 级 用 户 下 执 行：router add X.X.X.X Y.Y.Y.Y 1。 X.X.X.X 为 对 方Ethernet 网 地 址；Y.Y.Y.Y 为 对 方 广 域 网 地 址。 
+　　　---- 5. 使 用Tracert 对 路 由 进 行 跟 踪， 以 确 定 不 通 网 段。 
+　　WAN的配置 
+　　1、 配置DDR 
+　　Dial-on-demand routing(DDR)是用公共电话网提供了网络连接.通常的,广域网大多数用专线连接的,路由器连接到类似modem或ISDN TAs的数据终端DCE设备上,它们支持同步V.25bis协议,你可以用scripts和dialer命令设定拨号串.DDR比较适用于用户对数率要求不高,偶尔有数据传输或只是在特定时候传输数据,比如银行每晚传送报表等等情况下.当一个感兴趣的包到达路由器时,产生一个DDR请求.路由器发送呼叫建立信息给指定的串口的DCE设备.这个呼叫就把本地和远程的设备连接起来.一旦没有数据传输,空闲时间开始计时,超过设置的空闲时间,这一次连接终止.DDR现在都用静态路由来传输数据包,避免路由交换引起的DDR拨号.AppleTalk,Banyan VINES, CLNS, DECnet, IP, IPX, 和XNS可以通过DDR路由寻址.同步串口,异步串口和ISDN端口可以配置成到一个或多个目的地DDR连接.在配置DDR过程中,我们可以把一个或几个物理接口配置成一个逻辑拨号接口,它可以是同步V.25方式,同步DTR启动拨号或异步chat script方式.在端口配置模式下: 
+　　
+　　功能命令 
+　　在一个端口上激活 Dial-on-demand routing dialer in-band 
+　　指定一个端口为拨号访问组 dialer-group group-number 
+　　指定一个单一电话号码 dialer string dial-string 
+　　断线前空闲等待时间 dialer idle-time seconds 
+　　定义一个或多个目的电话号码表 dialer map protocol net-hop-address dialer-string 
+　　限定传输的access-list表或特定协议 dialer-list dialer-group list access-list-number 
+　　或 dialer-list dialer-group protocol protocol-name {permit|deny|list acce ss-list-number} 
+　　其中dialer string和dialer map两条命令任选一,dialer string是在只有一个电话号码时用,而dialer map是一个电话号码表. 
+　　详细配置说明请参阅下面"DDR Example"的实例. 
+　　
+　　配置拨号备份 
+　　拨号备份提供了一种保护,使得当广域网上主干线出现故障时,启动一条备份线路,使通信正常运转. 
+　　启动备份有两种情况: 
+　　主干线断掉 
+　　传输流量超过了定义的最大值 
+　　需作的定义如下: 
+　　在主干线路端口上设置它的备份端口 backup interface interface-name 
+　　定义备份负载 backup load {enable-threshold | never} {disable-load |never} 
+　　定义主干线up或down的响应时间 backup delay {enable-delay | never) {disable-delay | never} 
+　　其中: enable-threshold --- 表示主干线超过总传输量的百分比,启动备份线路 
+　　disable-load --- 表示传输量减少百分之多少就断开备份线路. 
+　　enable-delay --- 表示主干线断开多长时间后,启动备份线路. 
+　　disable-delay --- 表示主干线又重新恢复多长时间后,断开备份线路. 
+　　2、 配置帧中继 
+　　帧中继是一种由ANSI和CCITT标准化的协议,它能为现今突发性业务流量(如LAN互连及SNA业务)提供显著的性能价格优势.帧中继是客户端设备(CPE),诸如路由器或前端处理器,和一个向远程CPE发送数据的广域网之间的一种接口协议.它有以下几个特点:低时延，时延是指一个给定待发送帧穿过网络到达远程用户设备所用的时间.当网络时延增大时,性能会下降;尤其对于敏感协议(如SNA和DECnet),所有帧被发送后必须等待应答的协议(即Novell IPX),以及利用短交易式的应用.可靠性，在给定时延条件下,吞吐量随着网络的可靠性变化而变化,可靠性好,超时等待重发帧越少,吞吐量就会大大增加.更低的联网开销可预测性在许多网络环境中,如SNA CICS,不仅要求时延低,而且需要可预测性.公平性。Ciscos Frame Relay目前支持IP,DECnet,AppleTalk, Xerox Network Service(XNS), Novell IPX, International Organization for Standards (ISO) Connectionless Network Service (CLNS), Banyan VINES, 和 transparent bridging在帧中继中传输. 
+　　配置帧中继的工作表: 
+　　在一个端口上作帧中继打包 
+　　定义动态或静态的地址映射 
+　　定义LMI 
+　　配置帧中继交换虚电路 
+　　帧中继交换 
+　　监控帧中继连接 
+　　在一个端口上作帧中继打包 
+　　某一端口上配置帧中继打包走帧中继协议,在global配置模式下: 
+　　功 能 命 令 
+　　指定走帧中继的端口并进入端口配置模式 interface serial number 
+　　指定帧中继打包方式 encapsulation frame-relay [ietf] 
+　　Cisco的帧中继与RFC 1490的打包方式一致,允许不同厂家的产品互相通信.当与其它厂家路由器连接时,请用IETF打包. 
+　　定义动态或静态的地址映射 
+　　动态地址映射 
+　　动态地址映射用帧中继的翻转ARP协议发送请求下一个希望到达的地址(next hopprotocol address)(假设知道DLCI),当有应答翻转ARP协议请求时,保存在address-to-DLCI映射表中,这张表就用来提供下一个希望到达的地址或出去的DLCI地址翻转ARP协议默认是打开的,故动态地址映射不需要做任何配置. 
+　　静态地址映射 
+　　一个静态地址映射是人为的指定下一个希望到达的地址(next hop protocol address)与DLCI的对应关系.当指定了静态地址映射时,翻转ARP协议自动关闭. 
+　　建立静态地址映射表需完成: 
+　　功 能 命 令 
+　　定义一个端口或子端口的DLCI地址 frame-relay interface-dlci dlci 
+　　指定一个next hop protocol address与DLCI之间对应 frame-relay map protocol protocol-address dlci [broadcast] [ietf] [cisco]相应地,关键字protocol支持的协议: 
+　　IP---ip 
+　　DECnet---decnet 
+　　
+　　AppleTalk---appletalk 
+　　XNS---xns 
+　　Novell IPX---ipx 
+　　VINES---vines 
+　　ISO CLNS---clns 
+　　如果是一点对一点,可用interface-dlci命令,若是一点对多点则设定 frame-relay map 一系列的dlci与ip address 对应表. 
+　　定义LMII 
+　　在Cisco IOS Release 11.2版本以上,支持本地管理接口LMI(Local managementInterface)自动识别,即由交换机端口决定LMI的类型.当然,我们也可以明确配置 
+　　LMI类型. 
+　　功 能 命 令 
+　　建立路由器间keepalive时间 frame-relay keepalive number 
+　　定义N391的间隔时间 frame-relay lmi-n391-dte keep-exchanges 
+　　配置帧中继交换虚电路 
+　　目前,访问帧中继网是56K到45M数率,帧中继是在两个节点间建立面向连接的,包交换的虚电路. 
+　　在一个物理端口上配置SVCs 
+　　在子端口上配置SVCs 
+　　在一个帧中继端口上配置SVC操作 
+　　　 
+　　功 能 命 令 
+　　指定物理端口 interface serial number 
+　　如果需要,配置IP地址 ip address ip-address mask 
+　　在这个端口上配置帧中继打包 encapsulation frame-relay 
+　　在这个端口上激活帧中继SVC frame-relay svc 
+　　　 
+　　在子端口上配置SVCs 
+　　　 
+　　功 能 命 令 
+　　在主端口上指定一个子端口 interface serial number.subinterface-number {multipoint | point-to-point} 
+　　如果需要,配置IP地址 ip address ip-address mask 
+　　参阅下面"Configure subinterface Example"的例子. 
+　　　 
+　　帧中继交换 
+　　　 
+　　当一个帧中继网要通过IP网与另一个帧中继网互连,就要用到帧中继交换.把IP网 
+　　看作帧中继包的隧道通过去. 
+　　实现帧中继交换,配置如下: 
+　　功 能 命 令 
+　　把路由器作为帧中继交换机 frame-relay switching 
+　　在路由器上设置静态路由 frame-relay route in-dlci out-interface out-dlci 
+　　定义网络功能 frame-relay intf-type {dte| dce| nni} 
+　　请参阅"Frame Relay Switching Example"配置实例. 
+　　监控帧中继连接 
+　　在EXEC模式下: 
+　　功 能 命 令 
+　　显示帧中继DLCI和LMI信息 show interface serial number 
+　　显示LMI状态 show frame-relay lmi [type number] 
+　　显示PVC状态 show frame-relay pvc [type number [dlci]] 
+　　显示配置静态路由 show frame-relay route 
+　　显示帧中继传输状态 show frame-relay traffic 
+　　3、配置DDN 
+　　DDN(Digital Data Network)是一种点对点的同步数据通信链路.它支持PPP,SLIP,HDLC和SDLC等链路层通信协议.允许IP, Novell IPX, Bridging,CLNS,AppleTalk,DECnet等多种上层协议在上面运行. 
+　　　 
+　　基本配置 
+　　压缩技术 
+　　E1端口配置 
+　　基本配置 
+　　　 
+　　功 能 命 令 
+　　进入指定端口 interface serial number 
+　　定义该端口IP地址 ip address ip-address mask 
+　　指定该端口打包方式 encapsulation {PPP| HDLC } 
+　　　 
+　　压缩技术 
+　　　 
+　　通常在串口中传输的数据是不压缩的,它允许数据包头在每次传输时正常交换,但每次将浪费带宽.目前支持的压缩有PPP,Frame Relay, X.25, TCP等等. 
+　　　 
+　　Cisco的压缩是通过软件完成的,将影响系统性能.故建议路由器CPU占用超过65%,就不要使用压缩.(show process cpu EXEC命令查看当前CPU使用情况) 
+　　　 
+　　功 能 命 令 
+　　TCP传输头压缩 ip tcp head-compression [passive] 
+　　X.25压缩 X25 compress 
+　　PPP压缩 ppp compress [predictir|stac] 
+　　　 
+　　注: "passive"表示只有输入包是压缩时,输出包才压缩. 
+　　　 
+　　E1端口配置 
+　　　 
+　　在Cisco 4500,4700,7000和7500系列里面均支持E1(2.048Mbps)数率的接口.每一个E1端口可以按时隙分成30路64K数据线路和2路信号线路.这30个64K数据线路每一路均可以当作一条64K的专线. 
+　　　 
+　　功 能 命 令 
+　　在配置模式下,定义Controller E1 controller e1 slot/port 
+　　定义line code linecode {ami |hdb3} 
+　　定义字符帧 framing {crc4 |no-crc4} 
+　　定义E1组 channel-group number timeslots range [speed {48| 56| 64}] 
+　　指定串口属于那一个channel-group组 interface serial slot/port:channel-group 
+　　注:slot/port----是针对7000或7500系列的,故区分槽口号和端口号. 
+　　linecode----默认是HDB3. 
+　　framing----默认是crc4,要与电信局参数匹配. 
+　　channel-group----每个E1可以分成30个channel-group,把channel-group和时间槽对应起来.channel-group是0-30,timeslots是1-31. 
+　　interface serial----在定义完E1 channel-group后,我们把group赋予成一个虚拟串口. 
+　　具体的请参阅"Channelized E1 Interface Example"实例. 
+　　4、配置X.25 
+　　　 
+　　X.25配置完成如下工作: 
+　　功 能 命 令 
+　　设置X.25模式 encapsulation x25 [dte|dce] 
+　　设置最大虚电路数 x25 htc max-vc-number 
+　　设置X.121地址 x25 address x121-address 
+　　建立IP地址与X.121地址对应 x25 map ip ip-address x121-addres [broadcast] 
+　　htc----htc是最大的虚电路数,因为许多X.25交换机是从高到低建立虚电路的,max-vc-number不能超过申请的最大值. 
+　　请参阅"X.25 Example"的配置实例. 
+　　5、配置HDLC: 
+　　HDLC是CISCO路由器使用的缺省协议，一台新路由器在未指定封装协议时默认使用HDLC封装。 
+　　A.有关命令 
+　　端口设置: 
+　　任务 命令 
+　　设置HDLC封装 encapsulation hdlc 
+　　设置DCE端线路速度 clockrate speed 
+　　复位一个硬件接口 clear interface serial unit 
+　　显示接口状态 show interfaces serial [unit] 1 
+　　注:1.以下给出一个显示Cisco同步串口状态的例子. 
+　　
+　　Router#show interface serial 0 
+　　Serial 0 is up, line protocol is up 
+　　Hardware is MCI Serial 
+　　Internet address is 150.136.190.203, subnet mask is 255.255.255.0 
+　　MTU 1500 bytes, BW 1544 Kbit, DLY 20000 usec, rely 255/255, load 1/255 
+　　Encapsulation HDLC, loopback not set, keepalive set (10 sec) 
+　　Last input 0:00:07, output 0:00:00, output hang never 
+　　Output queue 0/40, 0 drops; input queue 0/75, 0 drops 
+　　Five minute input rate 0 bits/sec, 0 packets/sec 
+　　Five minute output rate 0 bits/sec, 0 packets/sec 
+　　16263 packets input, 1347238 bytes, 0 no buffer 
+　　Received 13983 broadcasts, 0 runts, 0 giants 
+　　2 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored, 2 abort 
+　　22146 packets output, 2383680 bytes, 0 underruns 
+　　0 output errors, 0 collisions, 2 interface resets, 0 restarts 
+　　1 carrier transitions 
+　　B. 举例: 
+　　设置如下： 
+　　Router1: 
+　　
+　　interface Serial0 
+　　ip address 192.200.10.1 255.255.255.0 
+　　clockrate 1000000 
+　　Router2: 
+　　
+　　interface Serial0 
+　　ip address 192.200.10.2 255.255.255.0 
+　　! 
+　　C. 举例使用E1线路实现多个64K专线连接. 
+　　相关命令: 
+　　任务 命令 
+　　进入controller配置模式 controller {t1 | e1} number 
+　　选择帧类型 framing {crc4 | no-crc4} 
+　　选择line-code类型 linecode {ami | b8zs | hdb3} 
+　　建立逻辑通道组与时隙的映射 channel-group number timeslots range1 
+　　显示controllers接口状态 show controllers e1 [slot/port]2 
+　　注: 1. 当链路为T1时,channel-group编号为0-23, Timeslot范围1-24; 当链路为E1时, channel-group编号为0-30, Timeslot范围1-31. 
+　　2.使用show controllers e1观察controller状态,以下为帧类型为crc4时controllers正常的状态. 
+　　Router# show controllers e1 
+　　e1 0/0 is up. 
+　　Applique type is Channelized E1 - unbalanced 
+　　Framing is CRC4, Line Code is HDB3 No alarms detected. 
+　　Data in current interval (725 seconds elapsed): 
+　　0 Line Code Violations, 0 Path Code Violations 
+　　0 Slip Secs, 0 Fr Loss Secs, 0 Line Err Secs, 0 Degraded Mins 
+　　0 Errored Secs, 0 Bursty Err Secs, 0 Severely Err Secs, 0 Unavail Secs 
+　　Total Data (last 24 hours) 0 Line Code Violations, 0 Path Code Violations, 
+　　0 Slip Secs, 0 Fr Loss Secs, 0 Line Err Secs, 0 Degraded Mins, 
+　　0 Errored Secs, 0 Bursty Err Secs, 0 Severely Err Secs, 0 Unavail Secs 
+　　以下例子为E1连接3条64K专线, 帧类型为NO-CRC4,非平衡链路,路由器具体设置如下: 
+　　
+　　shanxi#wri t 
+　　Building configuration... 
+　　Current configuration: 
+　　! 
+　　version 11.2 
+　　no service udp-small-servers 
+　　no service tcp-small-servers 
+　　! 
+　　hostname shanxi 
+　　! 
+　　enable secret 5 $1$XN08$Ttr8nfLoP9.2RgZhcBzkk/ 
+　　enable password shanxi 
+　　! 
+　　! 
+　　ip subnet-zero 
+　　! 
+　　controller E1 0 
+　　framing NO-CRC4 
+　　channel-group 0 timeslots 1 
+　　channel-group 1 timeslots 2 
+　　channel-group 2 timeslots 3 
+　　! 
+　　interface Ethernet0 
+　　ip address 133.118.40.1 255.255.0.0 
+　　media-type 10BaseT 
+　　! 
+　　interface Ethernet1 
+　　no ip address 
+　　shutdown 
+　　! 
+　　interface Serial0:0 
+　　ip address 202.119.96.1 255.255.255.252 
+　　no ip mroute-cache 
+　　! 
+　　interface Serial0:1 
+　　ip address 202.119.96.5 255.255.255.252 
+　　no ip mroute-cache 
+　　! 
+　　interface Serial0:2 
+　　ip address 202.119.96.9 255.255.255.252 
+　　no ip mroute-cache 
+　　! 
+　　no ip classless 
+　　ip route 133.210.40.0 255.255.255.0 Serial0:0 
+　　ip route 133.210.41.0 255.255.255.0 Serial0:1 
+　　ip route 133.210.42.0 255.255.255.0 Serial0:2 
+　　! 
+　　line con 0 
+　　line aux 0 
+　　line vty 0 4 
+　　password shanxi 
+　　login 
+　　! 
+　　end 
+　　6、配置PPP: 
+　　PPP(Point-to-Point Protocol)是SLIP(Serial Line IP protocol)的继承者，它提供了跨过同步和异步电路实现路由器到路由器(router-to-router)和主机到网络(host-to-network)的连接。 
+　　
+　　CHAP(Challenge Handshake Authentication Protocol)和PAP(Password Authentication Protocol) (PAP)通常被用于在PPP封装的串行线路上提供安全性认证。使用CHAP和PAP认证,每个路由器通过名字来识别，可以防止未经授权的访问。 
+　　
+　　CHAP和PAP在RFC 1334上有详细的说明。 
+　　
+　　A. 有关命令 
+　　端口设置 
+　　任务 命令 
+　　设置PPP封装 encapsulation ppp1 
+　　设置认证方法 ppp authentication {chap | chap pap | pap chap | pap} [if-needed] [list-name | default] [callin] 
+　　指定口令 username name password secret 
+　　设置DCE端线路速度 clockrate speed 
+　　注：1、要使用CHAP/PAP必须使用PPP封装。在与非Cisco路由器连接时，一般采用PPP封装，其它厂家路由器一般不支持Cisco的HDLC封装协议。 
+　　2. 举例 
+　　路由器Router1和Router2的S0口均封装PPP协议，采用CHAP做认证，在Router1中应建立一个用户，以对端路由器主机名作为用户名，即用户名应为router2。同时在Router2中应建立一个用户，以对端路由器主机名作为用户名，即用户名应为router1。所建的这两用户的password必须相同。 
+　　设置如下： 
+　　Router1: 
+　　
+　　hostname router1 
+　　username router2 password xxx 
+　　interface Serial0 
+　　ip address 192.200.10.1 255.255.255.0 
+　　clockrate 1000000 
+　　ppp authentication chap 
+　　! 
+　　Router2: 
+　　
+　　hostname router2 
+　　username router1 password xxx 
+　　interface Serial0 
+　　ip address 192.200.10.2 255.255.255.0 
+　　ppp authentication chap 
+　　
+　　7、广域网配置实例 
+　　　 
+　　DDR Example 
+　　Dial Backup Example 
+　　Configure subinterface Example 
+　　Frame Relay Switching Example 
+　　Channelized E1 Interface Example 
+　　X.25 Example 
+　　DDR Example 
+　　
+　　　例： 
+　　
+　　Configuration for RouterA: 
+　　　 
+　　ip route 131.108.29.0 131.108.126.2 
+　　ip route 131.108.1.0 131.108.126.2 
+　　dialer-list 1 protocol ip permit 
+　　dialer-list 1 protocol ipx deny 
+　　! 
+　　interface serial 0 
+　　ip address 131.108.126.1 255.255.255.0 
+　　dialer in-band 
+　　dialer-group 1 
+　　! 
+　　dialer map ip 131.108.126.2 5551234 
+　　! 
+　　dialer idle-timeout 300 
+　　　 
+　　Dial Backup Example 
+　　　 
+　　A)同步V.25 bits方式 
+　　　 
+　　Configuration for RouterA: 
+　　　 
+　　interface Serial0:0 
+　　backup delay 0 10 
+　　backup interface Serial10 
+　　ip address 16.217.30.2 255.255.255.252 
+　　! 
+　　interface Serial10 
+　　ip address 16.30.16.81 255.255.255.0 
+　　encapsulation ppp 
+　　dialer in-band 
+　　dialer string 8292 
+　　dialer-group 1 
+　　pulse-time 1 
+　　! 
+　　dialer-list 1 protocol ip permit 
+　　　 
+　　B)辅助口作拨号备份 
+　　　 
+　　Configuration for RouterA: 
+　　　 
+　　chat-script MYDIAL "" "atdt 8292" TIMEOUT 60 "CONNECT" 
+　　! 
+　　interface Serial0 
+　　backup delay 0 0 
+　　backup interface Async1 
+　　ip address 16.3.1.1 255.255.255.0 
+　　
+　　encapsulation ppp 
+　　! 
+　　interface Async1 
+　　ip address 16.3.2.1 255.255.255.0 
+　　encapsulation ppp 
+　　keepalive 9 
+　　async default routing 
+　　async dynamic address 
+　　async dynamic routing 
+　　async mode dedicated 
+　　dialer in-band 
+　　dialer string 8292 
+　　dialer-group 1 
+　　! 
+　　dialer-list 1 protocol ip permit 
+　　! 
+　　line aux 0 
+　　script dialer MYDIAL 
+　　modem InOut 
+　　transport output none 
+　　stopbits 1 
+　　flowcontrol hardware 
+　　speed 9600 
+　　　 
+　　Subinterface Example(Frame Relay) 
+　　　 
+　　　 
+　　Configuration for RouterA: 
+　　　 
+　　interface serial 0 
+　　encapsulation frame-relay 
+　　interface s 0.1 multipoint 
+　　ip address 11.10.11.1 255.255.255.0 
+　　frame-relay interface-dlci 41 
+　　frame-relay interface-dlci 42 
+　　　 
+　　Configuration for RouterC: 
+　　　 
+　　interface serial 0 
+　　encapsulation frame-relay 
+　　interface s 0.1 point-to-point 
+　　ip address 11.10.16.2 255.255.255.0 
+　　frame-relay interface-dlci 46 
+　　　 
+　　Configuration for RouterB: 
+　　　 
+　　interface serial 0 
+　　encapsulation frame-relay 
+　　interface s 0.1 multipoint 
+　　ip address 11.10.11.3 255.255.255.0 
+　　frame-relay interface-dlci 43 
+　　frame-relay interface-dlci 44 
+　　! 
+　　interface s 0.2 point-to-point 
+　　ip address 11.10.13.1 255.255.255.0 
+　　frame-relay interface-dlci 48 
+　　　 
+　　Frame Relay Switching Example 
+　　　 
+　　　 
+　　Configuration for RouterA: 
+　　　 
+　　frame-relay switching 
+　　! 
+　　int s 0 
+　　no ip address 
+　　frame-relay encapsulation 
+　　frame-relay route 167 tun0 43 
+　　frame-relay intf-type dce 
+　　! 
+　　int s 1 
+　　ip address 131.108.100.1 255.255.255.0 
+　　! 
+　　int tu 0 
+　　tunnel source serial 1 
+　　tunnel destination 131.108.13.2 
+　　　 
+　　Configuration for RouterB: 
+　　　 
+　　frame-relay switching 
+　　! 
+　　int s 0 
+　　no ip address 
+　　frame-relay encapsulation 
+　　frame-relay route 9 tun0 43 
+　　frame-relay intf-type dce 
+　　! 
+　　int s 1 
+　　ip address 131.108.13.2 255.255.255.0 
+　　! 
+　　int tu 0 
+　　tunnel source serial 1 
+　　tunnel destination 131.108.100.1 
+　　　 
+　　Channelized E1 Interface Example 
+　　　 
+　　假设是7500系列路由器,E1接口(MIP板)在插槽4上面.一个channel-group可对应多个时间槽,本例中serial4/0:1有5*64Kbps的数率.　 
+　　Configuration for Router: 
+　　　 
+　　controller E1 0 
+　　framing NO-CRC4 
+　　channel-group 0 timeslots 1 
+　　channel-group 1 timeslots 2,7-9,20 speed 64 
+　　! 
+　　interface Serial4/0:0 
+　　ip address 16.217.30.2 255.255.255.252 
+　　encapsulation ppp 
+　　! 
+　　interface Serial4/0:1 
+　　ip address 16.205.30.5 255.255.255.252 
+　　　 
+　　X.25 Example 
+　　　 
+　　在配置X.25时,为减少路由交换引起的呼叫,通常用静态路由.而当一对多情况下, 
+　　不在一个子网中用subinterface配置. 
+　　　 
+　　Configuration for Router: 
+　　　 
+　　interface serial 0 
+　　ip address 131.108.100.1 255.255.255.0 
+　　encapsulation x25 
+　　x25 address 041673226839 
+　　x25 htc 16 
+　　x25 map ip 131.108.100.2 041675222222 
+　　int s 0.1 
+　　ip address 131.108.101.1 255.255.255.0 
+　　x25 map ip 131.108.101.2 041674222222 
+　　! 
+　　ip route 131.108.100.0 255.255.255.0 131.108.100.2 
+　　ip route 131.108.101.0 255.255.255.0 131.108.101.2 
+　　路由协议设置 
+　　一、RIP协议 
+　　RIP(Routing information Protocol)是应用较早、使用较普遍的内部网关协议(Interior Gateway Protocol,简称IGP)，适用于小型同类网络，是典型的距离向量(distance-vector)协议。文档见RFC1058、RFC1723。 
+　　RIP通过广播UDP报文来交换路由信息，每30秒发送一次路由信息更新。RIP提供跳跃计数(hop count)作为尺度来衡量路由距离，跳跃计数是一个包到达目标所必须经过的路由器的数目。如果到相同目标有二个不等速或不同带宽的路由器，但跳跃计数相同，则RIP认为两个路由是等距离的。RIP最多支持的跳数为15，即在源和目的网间所要经过的最多路由器的数目为15，跳数16表示不可达。 
+　　1. 有关命令 
+　　任务 命令 
+　　指定使用RIP协议 router rip 
+　　指定RIP版本 version {1|2}1 
+　　指定与该路由器相连的网络 network network 
+　　注：1.Cisco的RIP版本2支持验证、密钥管理、路由汇总、无类域间路由(CIDR)和变长子网掩码(VLSMs) 
+　　2. 举例 
+　　Router1: 
+　　
+　　router rip 
+　　version 2 
+　　network 192.200.10.0 
+　　network 192.20.10.0 
+　　！ 
+　　相关调试命令： 
+　　show ip protocol 
+　　show ip route 
+　　
+　　二、IGRP协议 
+　　IGRP (Interior Gateway Routing Protocol)是一种动态距离向量路由协议，它由Cisco公司八十年代中期设计。使用组合用户配置尺度，包括延迟、带宽、可靠性和负载。 
+　　缺省情况下，IGRP每90秒发送一次路由更新广播，在3个更新周期内(即270秒)，没有从路由中的第一个路由器接收到更新，则宣布路由不可访问。在7个更新周期即630秒后，Cisco IOS 软件从路由表中清除路由。 
+　　1. 有关命令 
+　　任务 命令 
+　　指定使用RIP协议 router igrp autonomous-system1 
+　　指定与该路由器相连的网络 network network 
+　　指定与该路由器相邻的节点地址 neighbor ip-address 
+　　注：1、autonomous-system可以随意建立，并非实际意义上的autonomous-system,但运行IGRP的路由器要想交换路由更新信息其autonomous-system需相同。 
+　　2．举例 
+　　
+　　Router1: 
+　　router igrp 200 
+　　network 192.200.10.0 
+　　network 192.20.10.0 
+　　!
+　　 
+　　三、OSPF协议 
+　　OSPF(Open Shortest Path First)是一个内部网关协议(Interior Gateway Protocol,简称IGP)，用于在单一自治系统(autonomous system,AS)内决策路由。与RIP相对，OSPF是链路状态路由协议，而RIP是距离向量路由协议。 
+　　链路是路由器接口的另一种说法，因此OSPF也称为接口状态路由协议。OSPF通过路由器之间通告网络接口的状态来建立链路状态数据库，生成最短路径树，每个OSPF路由器使用这些最短路径构造路由表。 
+　　1．有关命令 
+　　全局设置 
+　　任务 命令 
+　　指定使用OSPF协议 router ospf process-id1 
+　　指定与该路由器相连的网络 network address wildcard-mask area area-id2 
+　　指定与该路由器相邻的节点地址 neighbor ip-address 
+　　注：1、OSPF路由进程process-id必须指定范围在1-65535，多个OSPF进程可以在同一个路由器上配置，但最好不这样做。多个OSPF进程需要多个OSPF数据库的副本，必须运行多个最短路径算法的副本。process-id只在路由器内部起作用，不同路由器的process-id可以不同。 
+　　2、wildcard-mask 是子网掩码的反码, 网络区域ID area-id在0-4294967295内的十进制数，也可以是带有IP地址格式的x.x.x.x。当网络区域ID为0或0.0.0.0时为主干域。不同网络区域的路由器通过主干域学习路由信息。 
+　　2．基本配置举例: 
+　　Router1: 
+　　interface ethernet 0 
+　　ip address 192.1.0.129 255.255.255.192 
+　　! 
+　　interface serial 0 
+　　ip address 192.200.10.5 255.255.255.252 
+　　! 
+　　router ospf 100 
+　　network 192.200.10.4 0.0.0.3 area 0 
+　　network 192.1.0.128 0.0.0.63 area 1 
+　　! 
+　　Router2: 
+　　
+　　interface ethernet 0 
+　　ip address 192.1.0.65 255.255.255.192 
+　　! 
+　　interface serial 0 
+　　ip address 192.200.10.6 255.255.255.252 
+　　! 
+　　router ospf 200 
+　　network 192.200.10.4 0.0.0.3 area 0 
+　　network 192.1.0.64 0.0.0.63 area 2 
+　　! 
+　　Router3: 
+　　
+　　interface ethernet 0 
+　　ip address 192.1.0.130 255.255.255.192 
+　　! 
+　　router ospf 300 
+　　network 192.1.0.128 0.0.0.63 area 1 
+　　! 
+　　Router4: 
+　　
+　　interface ethernet 0 
+　　ip address 192.1.0.66 255.255.255.192 
+　　! 
+　　router ospf 400 
+　　network 192.1.0.64 0.0.0.63 area 1 
+　　! 
+　　相关调试命令： 
+　　debug ip ospf events 
+　　debug ip ospf packet 
+　　show ip ospf 
+　　show ip ospf database 
+　　show ip ospf interface 
+　　show ip ospf neighbor 
+　　show ip route 
+　　3. 使用身份验证 
+　　为了安全的原因，我们可以在相同OSPF区域的路由器上启用身份验证的功能，只有经过身份验证的同一区域的路由器才能互相通告路由信息。 
+　　在默认情况下OSPF不使用区域验证。通过两种方法可启用身份验证功能，纯文本身份验证和消息摘要(md5)身份验证。纯文本身份验证传送的身份验证口令为纯文本，它会被网络探测器确定，所以不安全，不建议使用。而消息摘要(md5)身份验证在传输身份验证口令前，要对口令进行加密，所以一般建议使用此种方法进行身份验证。 
+　　使用身份验证时，区域内所有的路由器接口必须使用相同的身份验证方法。为起用身份验证，必须在路由器接口配置模式下，为区域的每个路由器接口配置口令。 
+　　任务 命令 
+　　指定身份验证 area area-id authentication [message-digest] 
+　　使用纯文本身份验证 ip ospf authentication-key password 
+　　使用消息摘要(md5)身份验证 ip ospf message-digest-key keyid md5 key 
+　　以下列举两种验证设置的示例，示例的网络分布及地址分配环境与以上基本配置举例相同，只是在Router1和Router2的区域0上使用了身份验证的功能。: 
+　　1.使用纯文本身份验证 
+　　Router1: 
+　　
+　　interface ethernet 0 
+　　ip address 192.1.0.129 255.255.255.192 
+　　! 
+　　interface serial 0 
+　　ip address 192.200.10.5 255.255.255.252 
+　　ip ospf authentication-key cisco 
+　　! 
+　　router ospf 100 
+　　network 192.200.10.4 0.0.0.3 area 0 
+　　network 192.1.0.128 0.0.0.63 area 1 
+　　area 0 authentication 
+　　! 
+　　Router2: 
+　　
+　　interface ethernet 0 
+　　ip address 192.1.0.65 255.255.255.192 
+　　! 
+　　interface serial 0 
+　　ip address 192.200.10.6 255.255.255.252 
+　　ip ospf authentication-key cisco 
+　　! 
+　　router ospf 200 
+　　network 192.200.10.4 0.0.0.3 area 0 
+　　network 192.1.0.64 0.0.0.63 area 2 
+　　area 0 authentication 
+　　! 
+　　例2.消息摘要(md5)身份验证： 
+　　Router1: 
+　　
+　　interface ethernet 0 
+　　ip address 192.1.0.129 255.255.255.192 
+　　! 
+　　interface serial 0 
+　　ip address 192.200.10.5 255.255.255.252 
+　　ip ospf message-digest-key 1 md5 cisco 
+　　! 
+　　router ospf 100 
+　　network 192.200.10.4 0.0.0.3 area 0 
+　　network 192.1.0.128 0.0.0.63 area 1 
+　　area 0 authentication message-digest 
+　　! 
+　　Router2: 
+　　
+　　interface ethernet 0 
+　　ip address 192.1.0.65 255.255.255.192 
+　　! 
+　　interface serial 0 
+　　ip address 192.200.10.6 255.255.255.252 
+　　ip ospf message-digest-key 1 md5 cisco 
+　　! 
+　　router ospf 200 
+　　network 192.200.10.4 0.0.0.3 area 0 
+　　network 192.1.0.64 0.0.0.63 area 2 
+　　area 0 authentication message-digest 
+　　! 
+　　相关调试命令： 
+　　debug ip ospf adj 
+　　debug ip ospf events 
+　　
+　　四、重新分配路由 
+　　在实际工作中，我们会遇到使用多个IP路由协议的网络。为了使整个网络正常地工作，必须在多个路由协议之间进行成功的路由再分配。 
+　　以下列举了OSPF与RIP之间重新分配路由的设置范例： 
+　　Router1的Serial 0端口和Router2的Serial 0端口运行OSPF，在Router1的Ethernet 0端口运行RIP 2，Router3运行RIP2，Router2有指向Router4的192.168.2.0/24网的静态路由，Router4使用默认静态路由。需要在Router1和Router3之间重新分配OSPF和RIP路由，在Router2上重新分配静态路由和直连的路由。 
+　　范例所涉及的命令 
+　　任务 命令 
+　　重新分配直连的路由 redistribute connected 
+　　重新分配静态路由 redistribute static 
+　　重新分配ospf路由 redistribute ospf process-id metric metric-value 
+　　重新分配rip路由 redistribute rip metric metric-value 
+　　Router1: 
+　　
+　　interface ethernet 0 
+　　ip address 192.168.1.1 255.255.255.0 
+　　! 
+　　interface serial 0 
+　　ip address 192.200.10.5 255.255.255.252 
+　　! 
+　　router ospf 100 
+　　redistribute rip metric 10 
+　　network 192.200.10.4 0.0.0.3 area 0 
+　　! 
+　　router rip 
+　　version 2 
+　　redistribute ospf 100 metric 1 
+　　network 192.168.1.0 
+　　! 
+　　Router2: 
+　　
+　　interface loopback 1 
+　　ip address 192.168.3.2 255.255.255.0 
+　　! 
+　　interface ethernet 0 
+　　ip address 192.168.0.2 255.255.255.0 
+　　! 
+　　interface serial 0 
+　　ip address 192.200.10.6 255.255.255.252 
+　　! 
+　　router ospf 200 
+　　redistribute connected subnet 
+　　redistribute static subnet 
+　　network 192.200.10.4 0.0.0.3 area 0 
+　　! 
+　　ip route 192.168.2.0 255.255.255.0 192.168.0.1 
+　　！ 
+　　Router3: 
+　　
+　　interface ethernet 0 
+　　ip address 192.168.1.2 255.255.255.0 
+　　! 
+　　router rip 
+　　version 2 
+　　network 192.168.1.0 
+　　! 
+　　Router4: 
+　　
+　　interface ethernet 0 
+　　ip address 192.168.0.1 255.255.255.0 
+　　! 
+　　interface ethernet 1 
+　　ip address 192.168.2.1 255.255.255.0 
+　　! 
+　　ip route 0.0.0.0 0.0.0.0 192.168.0.2 
+　　! 
+　　
+　　五、IPX协议设置 
+　　IPX协议与IP协议是两种不同的网络层协议，它们的路由协议也不一样，IPX的路由协议不象IP的路由协议那样丰富，所以设置起来比较简单。但IPX协议在以太网上运行时必须指定封装形式。 
+　　1． 有关命令 
+　　启动IPX路由 ipx routing 
+　　设置IPX网络及以太网封装形式 ipx network network [encapsulation encapsulation-type]1 
+　　指定路由协议，默认为RIP ipx router {eigrp autonomous-system-number | nlsp [tag] | rip} 
+　　注：1.network 范围是1 到FFFFFFFD. 
+　　IPX封装类型列表 
+　　接口类型 封装类型 IPX帧类型 
+　　Ethernet novell-ether (默认) arpa sap snap Ethernet_802.3 Ethernet_II Ethernet_802.2 Ethernet_Snap 
+　　Token Ring sap (默认) snap Token-Ring Token-Ring_Snap 
+　　FDDI snap (默认) sap novell-fddi Fddi_Snap Fddi_802.2 Fddi_Raw 
+　　在此例中，WAN的IPX网络为3a00,Router1所连接的局域网IPX网络号为2a00,在此局域网有一台Novell服务器，IPX网络号也是2a00, 路由器接口的IPX网络号必须与在同一网络的Novell服务器上设置的IPX网络号相同。路由器通过监听SAP来建立已知的服务及自己的网络地址表，并每60秒发送一次自己的SAP表。 
+　　Router1: 
+　　
+　　ipx routing 
+　　interface ethernet 0 
+　　ipx network 2a00 encapsulation sap 
+　　! 
+　　interface serial 0 
+　　ipx network 3a00 
+　　! 
+　　ipx router eigrp 10 
+　　network 3a00 
+　　network 2a00 
+　　! 
+　　Router2: 
+　　
+　　ipx routing 
+　　interface ethernet 0 
+　　ipx network 2b00 encapsulation sap 
+　　! 
+　　interface serial 0 
+　　ipx network 3a00 
+　　! 
+　　ipx router eigrp 10 
+　　network 2b00 
+　　network 3a00 
+　　! 
+　　相关调试命令： 
+　　debug ipx packet 
+　　debug ipx routing 
+　　debug ipx sap 
+　　debug ipx spoof 
+　　debug ipx spx 
+　　show ipx eigrp interfaces 
+　　show ipx eigrp neighbors 
+　　show ipx eigrp topology 
+　　show ipx interface 
+　　show ipx route 
+　　show ipx servers 
+　　show ipx spx-spoof
+
+ 

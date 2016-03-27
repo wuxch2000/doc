@@ -1,0 +1,37 @@
+代码总量：27万行左右
+人均代码变化：15行人天，300行人月
+5个人：就是1500行，总计报9万行
+
+基本分层：TU/TR/TP+SDP parser+SIP parser
+OMM:Config/stat/trace/alarm/log/diag
+
+TP(传输层):UDP码流收发、TCP/SCTP链路管理；信令压缩功能、IPsec功能等
+TR(事务层):请求消息的重发和吸收，在一定程度上保证UDP传输的可靠性。TR层有四个事务，各有自己的状态机；
+            Invite client、noinvite client、
+            invite server、noinvite server
+TU(代理层):提供基本的最基本、最核心的协议操作（RFC3261），维护Dialog和相关的事务信息。TU层分为三个部分，一是呼叫处理、二是订阅处理、三是非呼叫消息的处理；
+
+T1=500ms, T2=8*T1=2s, 11个T2后释放事务。
+
+Method: REGISTER/INVITE/ACK/CANCEL/BYE/OPTIONS 共6个
+1xx: Provisional 2xx:success 3xx:redirection 4xx:client error 5xx:sever error 6xx:global error
+
+SDP: 4566 // 2327 3266
+
+SIP用户摘机支持special dial tone
+PCCW SIP SERVER:SIP用户支持立即热线、延时热线
+SIP支持MWI，采取Subscribe方式(概要设计)
+俄罗斯伏尔加电信漫游功能SIP用户优化
+SIP支持MWI，采取Subscribe方式（透传）
+SIP PBX支持并发控制合入61版本
+Starhub SIP Forking
+土耳其TT:SIP支持大小写B字母
+SIP PBX的前转业务需求
+Number Conversion with FC3 trigger of SIP-SN
+SS1b支持SIP TEL格式
+SIP forking单用户拒绝后拆除所有呼叫
+PCCW: SIP-I ISUP VERSION支持PCCW标识
+SIP节点动态闭塞功能
+挪威VPBX在SIP协议中扩展NPI和NOA功能
+印度TCL 将SS上中继群号通过SIP协议传递给UP10
+SIP漫游改进
